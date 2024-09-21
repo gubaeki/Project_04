@@ -3725,65 +3725,34 @@
 /* Banner */
 	#banner {
 		display: -ms-flexbox;
-		-ms-flex-pack: center;
-		-ms-flex-align: center;
-		-moz-align-items: center;
-		-webkit-align-items: center;
-		-ms-align-items: center;
-		align-items: center;
-		display: -moz-flex;
-		display: -webkit-flex;
-		display: -ms-flex;
-		display: flex;
-		-moz-justify-content: center;
-		-webkit-justify-content: center;
-		-ms-justify-content: center;
-		justify-content: center;
-		background-image: url("../../images/banner.gif"), url("../../images/bbg.png");
-		background-position: center, left top;
-		background-size: contain, cover;
-		background-repeat: no-repeat;
-		border-top: 0;
-		min-height: 90vh;
-		height: 100%;
-		/*height: 100vh !important;*/
-		width: 100%;
-		position: relative;
-		text-align: center;
-		overflow: hidden;
+	-ms-flex-pack: center;
+	-ms-flex-align: center;
+	-moz-align-items: center;
+	-webkit-align-items: center;
+	-ms-align-items: center;
+	align-items: center;
+	display: -moz-flex;
+	display: -webkit-flex;
+	display: -ms-flex;
+	display: flex;
+	-moz-justify-content: center;
+	-webkit-justify-content: center;
+	-ms-justify-content: center;
+	justify-content: center;
+	background-image: url("../../images/bbg.png");
+	background-position: left top;
+	background-size: cover;
+	background-repeat: no-repeat;
+	border-top: 0;
+	min-height: 100vh;
+	height: 100%;
+	/*height: 100vh !important;*/
+	width: 100%;
+	position: relative;
+	text-align: center;
+	overflow: hidden;
+	z-index: 1;
 	}
-
-		#banner .inner {
-			-moz-transform: scale(1.0);
-			-webkit-transform: scale(1.0);
-			-ms-transform: scale(1.0);
-			transform: scale(1.0);
-			-moz-transition: opacity 1s ease, -moz-transform 1s ease;
-			-webkit-transition: opacity 1s ease, -webkit-transform 1s ease;
-			-ms-transition: opacity 1s ease, -ms-transform 1s ease;
-			transition: opacity 1s ease, transform 1s ease;
-			
-			opacity: 1;
-			z-index: 2;
-		}
-
-		#banner h1 {
-			font-size: 4rem;
-			margin-bottom: 1rem;
-			color: #080000;
-		}
-
-		#banner p {
-			color: rgba(7, 0, 0, 0.65);
-			font-size: 1.5rem;
-			margin-bottom: 3rem;
-		}
-
-		#banner a {
-			color: #070000;
-			text-decoration: none;
-		}
-
 
 .btn-gradient {
   all: initial;
@@ -3938,344 +3907,7 @@
     color:#fff;
 }
 
-/* Flexgrid */
 
-	#flexgrid {
-		width: 100%;
-		margin: 0 0 2.5rem 0;
-		display: -moz-flex;
-		display: -webkit-flex;
-		display: -ms-flex;
-		display: flex;
-		-moz-flex-wrap: wrap;
-		-webkit-flex-wrap: wrap;
-		-ms-flex-wrap: wrap;
-		flex-wrap: wrap;
-		-moz-align-items: stretch;
-		-webkit-align-items: stretch;
-		-ms-align-items: stretch;
-		align-items: stretch;
-	}
-
-		#flexgrid > * {
-			-moz-flex-shrink: 1;
-			-webkit-flex-shrink: 1;
-			-ms-flex-shrink: 1;
-			flex-shrink: 1;
-			-moz-flex-grow: 0;
-			-webkit-flex-grow: 0;
-			-ms-flex-grow: 0;
-			flex-grow: 0;
-		}
-
-		#flexgrid > * {
-			width: 33.33333%;
-		}
-
-		#flexgrid > * {
-			padding: 3rem;
-			width: calc(33.33333% + 2rem);
-		}
-
-		#flexgrid > :nth-child(-n + 3) {
-			padding-top: 0;
-		}
-
-		#flexgrid > :nth-last-child(-n + 3) {
-			padding-bottom: 0;
-		}
-
-		#flexgrid > :nth-child(3n + 1) {
-			padding-left: 0;
-		}
-
-		#flexgrid > :nth-child(3n) {
-			padding-right: 0;
-		}
-
-		#flexgrid > :nth-child(3n + 1),
-		#flexgrid > :nth-child(3n) {
-			width: calc(33.33333% + -1rem);
-		}
-
-		#flexgrid > div {
-			border-style: solid;
-			border-color: rgba(255, 255, 255, 0.25);
-			border-left-width: 1px;
-			border-top-width: 1px;
-			text-align: center;
-		}
-
-			#flexgrid > div > :last-child {
-				margin-bottom: 0;
-			}
-
-			#flexgrid > div:nth-child(3n - 2) {
-				border-left-width: 0;
-			}
-
-			#flexgrid > div:nth-child(-n + 3) {
-				border-top-width: 0;
-			}
-
-			#flexgrid > div .icon {
-				display: -moz-flex;
-				display: -webkit-flex;
-				display: -ms-flex;
-				display: flex;
-				-moz-align-items: center;
-				-webkit-align-items: center;
-				-ms-align-items: center;
-				align-items: center;
-				-moz-justify-content: center;
-				-webkit-justify-content: center;
-				-ms-justify-content: center;
-				justify-content: center;
-				font-size: 3.5rem;
-				background: #fff;
-				color: #5AA6ED;
-				width: 8rem;
-				height: 8rem;
-				border-radius: 100%;
-				margin: 0 auto 2rem auto;
-			}
-
-		@media screen and (max-width: 980px) {
-
-			#flexgrid > * {
-				width: 100%;
-			}
-
-			#flexgrid > * {
-				padding: 2rem;
-				width: calc(33.33333% + 1.33333rem);
-			}
-
-			#flexgrid > :nth-child(-n + 3) {
-				padding-top: 2rem;
-			}
-
-			#flexgrid > :nth-last-child(-n + 3) {
-				padding-bottom: 2rem;
-			}
-
-			#flexgrid > :nth-child(3n + 1) {
-				padding-left: 2rem;
-			}
-
-			#flexgrid > :nth-child(3n) {
-				padding-right: 2rem;
-			}
-
-			#flexgrid > :nth-child(3n + 1),
-			#flexgrid > :nth-child(3n) {
-				padding: 2rem;
-				width: calc(100% + 4rem);
-			}
-
-			#flexgrid > * {
-				padding: 2rem;
-				width: calc(50% + 2rem);
-			}
-
-			#flexgrid > :nth-child(-n + 2) {
-				padding-top: 2rem;
-			}
-
-			#flexgrid > :nth-last-child(-n + 2) {
-				padding-bottom: 2rem;
-			}
-
-			#flexgrid > :nth-child(2n + 1) {
-				padding-left: 2rem;
-			}
-
-			#flexgrid > :nth-child(2n) {
-				padding-right: 2rem;
-			}
-
-			#flexgrid > :nth-child(2n + 1),
-			#flexgrid > :nth-child(2n) {
-				padding: 2rem;
-				width: calc(100% + 4rem);
-			}
-
-			#flexgrid > * {
-				padding: 2rem;
-				width: calc(100% + 4rem);
-			}
-
-			#flexgrid > :nth-child(-n + 1) {
-				padding-top: 0;
-			}
-
-			#flexgrid > :nth-last-child(-n + 1) {
-				padding-bottom: 0;
-			}
-
-			#flexgrid > :nth-child(1n + 1) {
-				padding-left: 0;
-			}
-
-			#flexgrid > :nth-child(1n) {
-				padding-right: 0;
-			}
-
-			#flexgrid > :nth-child(1n + 1),
-			#flexgrid > :nth-child(1n) {
-				width: calc(100% + 2rem);
-			}
-
-			#flexgrid > div:nth-child(2n - 1) {
-				border-left-width: 1px;
-			}
-
-			#flexgrid > div:nth-child(-n + 2) {
-				border-top-width: 1px;
-			}
-
-			#flexgrid > div:nth-child(-n + 3) {
-				border-top-width: 1px;
-			}
-
-			#flexgrid > div:nth-child(n) {
-				border-left-width: 0;
-			}
-
-			#flexgrid > div:nth-child(-n + 1) {
-				border-top-width: 0;
-			}
-
-			#flexgrid > div .icon {
-				font-size: 2rem;
-				width: 6rem;
-				height: 6rem;
-			}
-
-		}
-
-	.grid-style {
-		width: 100%;
-		margin: 0 0 2.5rem 0;
-		display: -moz-flex;
-		display: -webkit-flex;
-		display: -ms-flex;
-		display: flex;
-		-moz-flex-wrap: wrap;
-		-webkit-flex-wrap: wrap;
-		-ms-flex-wrap: wrap;
-		flex-wrap: wrap;
-		-moz-align-items: stretch;
-		-webkit-align-items: stretch;
-		-ms-align-items: stretch;
-		align-items: stretch;
-	}
-
-		.grid-style > * {
-			-moz-flex-shrink: 1;
-			-webkit-flex-shrink: 1;
-			-ms-flex-shrink: 1;
-			flex-shrink: 1;
-			-moz-flex-grow: 0;
-			-webkit-flex-grow: 0;
-			-ms-flex-grow: 0;
-			flex-grow: 0;
-		}
-
-		.grid-style > * {
-			width: 50%;
-		}
-
-		.grid-style > * {
-			padding: 3rem;
-			width: calc(50% + 3rem);
-		}
-
-		.grid-style > :nth-child(-n + 2) {
-			padding-top: 0;
-		}
-
-		.grid-style > :nth-last-child(-n + 2) {
-			padding-bottom: 0;
-		}
-
-		.grid-style > :nth-child(2n + 1) {
-			padding-left: 0;
-		}
-
-		.grid-style > :nth-child(2n) {
-			padding-right: 0;
-		}
-
-		.grid-style > :nth-child(2n + 1),
-		.grid-style > :nth-child(2n) {
-			width: calc(50% + 0rem);
-		}
-
-		.grid-style .box {
-			margin: 0;
-		}
-
-		@media screen and (max-width: 980px) {
-
-			.grid-style > * {
-				width: 100%;
-			}
-
-			.grid-style > * {
-				padding: 2rem;
-				width: calc(50% + 2rem);
-			}
-
-			.grid-style > :nth-child(-n + 2) {
-				padding-top: 2rem;
-			}
-
-			.grid-style > :nth-last-child(-n + 2) {
-				padding-bottom: 2rem;
-			}
-
-			.grid-style > :nth-child(2n + 1) {
-				padding-left: 2rem;
-			}
-
-			.grid-style > :nth-child(2n) {
-				padding-right: 2rem;
-			}
-
-			.grid-style > :nth-child(2n + 1),
-			.grid-style > :nth-child(2n) {
-				padding: 2rem;
-				width: calc(100% + 4rem);
-			}
-
-			.grid-style > * {
-				padding: 2rem;
-				width: calc(100% + 4rem);
-			}
-
-			.grid-style > :nth-child(-n + 1) {
-				padding-top: 0;
-			}
-
-			.grid-style > :nth-last-child(-n + 1) {
-				padding-bottom: 0;
-			}
-
-			.grid-style > :nth-child(1n + 1) {
-				padding-left: 0;
-			}
-
-			.grid-style > :nth-child(1n) {
-				padding-right: 0;
-			}
-
-			.grid-style > :nth-child(1n + 1),
-			.grid-style > :nth-child(1n) {
-				width: calc(100% + 2rem);
-			}
-
-		}
 
 		.w-btn-outline {
 			position: relative;
@@ -4394,4 +4026,79 @@
 			color: #6e6e6e;
 		}
 	
-	
+
+/* -------------------------------Room CSS start line-------------------------------*/
+
+#banner3 {
+	display: -ms-flexbox;
+	-ms-flex-pack: center;
+	-ms-flex-align: center;
+	-moz-align-items: center;
+	-webkit-align-items: center;
+	-ms-align-items: center;
+	align-items: center;
+	display: -moz-flex;
+	display: -webkit-flex;
+	display: -ms-flex;
+	display: flex;
+	-moz-justify-content: center;
+	-webkit-justify-content: center;
+	-ms-justify-content: center;
+	justify-content: center;
+	background-image: url("../../images/bbg.png");
+	background-position: left top;
+	background-size: cover;
+	background-repeat: no-repeat;
+	border-top: 0;
+	min-height: 100vh;
+	height: 100%;
+	/*height: 100vh !important;*/
+	width: 100%;
+	position: relative;
+	text-align: center;
+	overflow: hidden;
+	z-index: 1;
+}
+
+#banner3 .base_container {
+	width: 100%;
+	max-width: 100%;
+	position: relative;
+	padding-top: 216.36%;
+	background-color: rgb(223, 224, 210); /* For demonstration */
+	overflow: hidden;
+}
+
+#banner3 .bottom_section  {
+	z-index: 2;
+	top: 70%;
+	width: 100%;
+	height: 30%;
+	position: absolute;
+	border: 5px solid white;
+	max-width: 100%;
+	max-height: 100%;
+	background-color: rgb(223, 224, 210); /* For demonstration */
+}
+
+#room_container {
+	z-index: 2;
+	width: 100%;
+	height: 60%;
+	background-image: url("../../images/room1.png");
+	background-size: cover;
+	background-position: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#item_container {
+	width: 100%; 
+	height: 10%;
+	background-color: #deed5a;
+	position: absolute;
+	top: 60%;
+	left: 0;
+}
+
