@@ -12,7 +12,6 @@ var bannerHeight = bannerRect.height;
 
 
 start_container.addEventListener('touchstart', (e) => {
-    console.log('aaa');
-    intro_container.style.backgroundImage = "url('../../images/bg_intro2.png')";
+    intro_container.setAttribute('src', 'images/bg_intro2.png');
     e.preventDefault();
 });
