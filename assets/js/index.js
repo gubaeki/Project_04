@@ -29,6 +29,9 @@ start_bt.addEventListener('touchstart', (e) => {
     setTimeout(function(){ //dark 두번 깜빡임 구현
         dark.style.display = 'block';
     },850);
-    
+    setTimeout(function(){ //dark 두번 깜빡임 구현
+        location.href='room_first.html'
+    },3000);
+
     e.preventDefault();
 });
