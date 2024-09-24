@@ -3,14 +3,6 @@ const intro_container = document.getElementById('intro_container')
 var start_bt = document.getElementById('start_bt');
 var dark = document.getElementById('dark');
 
-var banner = document.getElementById('banner3');
-var bannerRect = banner.getBoundingClientRect();
-var bannerWidth = bannerRect.width;
-var bannerHeight = bannerRect.height;
-
-
-
-
 
 start_bt.addEventListener('touchstart', (e) => {
     start_bt.style.display = 'none';
