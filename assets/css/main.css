@@ -4090,6 +4090,38 @@
 	top: 0;
 	left: 0;
 }
+#loading {
+	display: block;
+	z-index: 2000;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-color: rgb(108, 177, 235);
+	text-align: center;
+	justify-content: center;
+	top: 0;
+	left: 0;
+}
+#loading_text {
+	z-index: 2001;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	color : black;
+	font-size: 8vw;
+	text-shadow: -1px 0px rgb(255, 255, 255), 0px 1px rgb(255, 255, 255), 1px 0px rgb(255, 255, 255), 0px -1px rgb(255, 255, 255);
+	top: 35%;
+	left: 0;
+}
+#running {
+	z-index: 2001;
+	width: 40%;
+	height: 20%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 25%;
+	left: 50%;
+}
 #dark {
 	z-index: 3;
 	width: 100%;
