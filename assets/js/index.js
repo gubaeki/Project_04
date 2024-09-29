@@ -2,6 +2,7 @@
 const intro_container = document.getElementById('intro_container')
 var start_bt = document.getElementById('start_bt');
 var dark = document.getElementById('dark');
+var loading = document.getElementById('loading');
 
 
 
@@ -53,6 +54,12 @@ function preload(images) {
   }
 
 preload(images);
+
+window.onload = function(){
+    console.log('전부로드');
+    loading.style.display = 'none';
+}
+
 
 
 start_bt.addEventListener('touchstart', (e) => {

@@ -21,7 +21,7 @@ var key = document.getElementById('key');
 var glass = document.getElementById('glass');
 var success = document.getElementById('success');
 var gotomain = document.getElementById('gotomain');
-
+var loading = document.getElementById('loading');
 
 //item 관련선언
 var item = [,,,,];
@@ -52,6 +52,66 @@ var subroom_open = false;
 var subroom_in = false;
 var glass_get = false;
 var backho_get = false;
+
+
+
+//---------------------------------------------------------------
+// 이미지 Preload
+let images = [
+    "../../images/dark.png",
+    "../../images/bg_intro1.png",
+    "../../images/bg_intro2.png",
+    "../../images/bottom.png",
+    "../../images/bottom_success.png",
+    "../../images/start.png",
+    "../../images/item.png",
+    "../../images/room1.png",
+    "../../images/room1-1.png",
+    "../../images/room1-2.png",
+    "../../images/room1-2-1.png",
+    "../../images/room1-3.png",
+    "../../images/room1-3-1.png",
+    "../../images/room1-3-2.png",
+    "../../images/room1-3-3.png",
+    "../../images/room1-4.png",
+    "../../images/return.png",
+    "../../images/hammer_bg.png",
+    "../../images/hammer_item.png",
+    "../../images/memo_bg_red.png",
+    "../../images/memo_bg_blue.png",
+    "../../images/towel_min.png",
+    "../../images/switch_Off.png",
+    "../../images/memo_red.png",
+    "../../images/memo_blue.png",
+    "../../images/tile.png",
+    "../../images/light.png",
+    "../../images/safe.png",
+    "../../images/safe_open.png",
+    "../../images/key.png",
+    "../../images/glass.png",
+    "../../images/success.png",
+    "../../images/gotomain.png"];
+let images_pre = [];
+
+function preload(images) {
+    for(let i = 0; i < images.length; i++) {
+        images_pre[i] = new Image();
+        images_pre[i].src = images[i];
+      if(i === images.length - 1){console.log('preload finish');}
+    }
+  }
+
+preload(images);
+
+window.onload = function(){
+    console.log('전부로드');
+    loading.style.display = 'none';
+}
+
+
+
+
+
 
 document.addEventListener('click', function(event) {
 
