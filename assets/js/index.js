@@ -14,52 +14,33 @@ let images = [
     "../../images/bg_intro1.png",
     "../../images/bg_intro2.png",
     "../../images/bottom.png",
-    "../../images/bottom_success.png",
-    "../../images/start.png",
-    "../../images/item.png",
-    "../../images/room1.png",
-    "../../images/room1-1.png",
-    "../../images/room1-2.png",
-    "../../images/room1-2-1.png",
-    "../../images/room1-3.png",
-    "../../images/room1-3-1.png",
-    "../../images/room1-3-2.png",
-    "../../images/room1-3-3.png",
-    "../../images/room1-4.png",
-    "../../images/return.png",
-    "../../images/hammer_bg.png",
-    "../../images/hammer_item.png",
-    "../../images/memo_bg_red.png",
-    "../../images/memo_bg_blue.png",
-    "../../images/towel_min.png",
-    "../../images/switch_Off.png",
-    "../../images/memo_red.png",
-    "../../images/memo_blue.png",
-    "../../images/tile.png",
-    "../../images/light.png",
-    "../../images/safe.png",
-    "../../images/safe_open.png",
-    "../../images/key.png",
-    "../../images/glass.png",
-    "../../images/success.png",
-    "../../images/gotomain.png"];
-let images_pre = [];
+    "../../images/start.png"
+];
+    let images_pre = [];
 
-function preload(images) {
-    for(let i = 0; i < images.length; i++) {
-        images_pre[i] = new Image();
-        images_pre[i].src = images[i];
-      if(i === images.length - 1){console.log('preload finish');}
+    var fail_count = 0;
+    
+    function preload(images) {
+        for(let i = 0; i < images.length; i++) {
+            images_pre[i] = new Image();
+            images_pre[i].src = images[i];
+            if(images_pre[i].complete == false){
+                fail_count++;
+                console.log(i);
+            }
+            
+          if(i === images.length - 1){console.log('preload finish');}
+        }
+      }
+    
+    preload(images);
+    console.log(fail_count);
+    
+    
+    window.onload = function(){
+        console.log('로드완료');
+        loading.style.display = 'none';
     }
-  }
-
-preload(images);
-
-window.onload = function(){
-    console.log('전부로드');
-    loading.style.display = 'none';
-}
-
 
 
 start_bt.addEventListener('touchstart', (e) => {

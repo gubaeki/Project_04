@@ -57,13 +57,11 @@ var backho_get = false;
 
 //---------------------------------------------------------------
 // 이미지 Preload
+
 let images = [
     "../../images/dark.png",
-    "../../images/bg_intro1.png",
-    "../../images/bg_intro2.png",
     "../../images/bottom.png",
     "../../images/bottom_success.png",
-    "../../images/start.png",
     "../../images/item.png",
     "../../images/room1.png",
     "../../images/room1-1.png",
@@ -93,23 +91,27 @@ let images = [
     "../../images/gotomain.png"];
 let images_pre = [];
 
+var fail_count = 0;
+
 function preload(images) {
     for(let i = 0; i < images.length; i++) {
         images_pre[i] = new Image();
         images_pre[i].src = images[i];
+        if(images_pre[i].complete == false){
+            fail_count++;
+            console.log(i);
+        }
+        
       if(i === images.length - 1){console.log('preload finish');}
     }
   }
-
 preload(images);
+console.log(fail_count);
 
 window.onload = function(){
-    console.log('전부로드');
+    console.log('로드완료');
     loading.style.display = 'none';
 }
-
-
-
 
 
 
