@@ -4359,7 +4359,7 @@
 	animation: loop 3s infinite;
 }
 #gotomain {
-	display: block;
+	display: none;
 	z-index: 1005;
 	width: 50%; 
 	height: 21%;
