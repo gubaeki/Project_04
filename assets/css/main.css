@@ -4400,3 +4400,13 @@
 	top: 52%;
 	left: 50%;
 }
+#exit {
+	display: none;
+	z-index: 1005;
+	width: 44%; 
+	height: 12%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 52%;
+	left: 50%;
+}

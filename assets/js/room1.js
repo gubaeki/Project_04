@@ -22,6 +22,8 @@ var glass = document.getElementById('glass');
 var success = document.getElementById('success');
 var gotomain = document.getElementById('gotomain');
 var loading = document.getElementById('loading');
+var exit = document.getElementById('exit');
+var ending = document.getElementById('ending');
 
 //item 관련선언
 var item = [,,,,];
@@ -88,7 +90,10 @@ let images = [
     "../../images/key.png",
     "../../images/glass.png",
     "../../images/success.png",
-    "../../images/gotomain.png"];
+    "../../images/gotomain.png",
+    "../../images/exit.png",
+    "../../images/ending.gif"];
+
 let images_pre = [];
 
 var fail_count = 0;
@@ -99,7 +104,6 @@ function preload(images) {
         images_pre[i].src = images[i];
         if(images_pre[i].complete == false){
             fail_count++;
-            console.log(i);
         }
         
       if(i === images.length - 1){console.log('preload finish');}
@@ -274,8 +278,9 @@ document.addEventListener('click', function(event) {
                         success.style.display = 'block';
                         bottom_img.setAttribute('src', 'images/bottom_success.png');
                         dark2.style.display = 'none';
-                        return_img.style.display = 'none'
-                        gotomain.style.display='block';
+                        return_img.style.display = 'none';
+                        exit.style.display='block';
+                        //gotomain.style.display='block';
                         item_used('glass');
                         item_reset();
                     }
@@ -614,6 +619,12 @@ function safe_reset(){
     safe_value = 0;
     safe_number.textContent = '';
 }
+
+exit.addEventListener('click', function(event) {
+    room.setAttribute('src', 'images/ending.gif');
+    exit.style.display = 'none';
+    success.style.display = 'none';
+});
 
 gotomain.addEventListener('click', function(event) {
     gotomain.style.display = 'none';

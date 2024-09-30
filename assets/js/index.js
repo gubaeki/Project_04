@@ -26,7 +26,6 @@ let images = [
             images_pre[i].src = images[i];
             if(images_pre[i].complete == false){
                 fail_count++;
-                console.log(i);
             }
             
           if(i === images.length - 1){console.log('preload finish');}
