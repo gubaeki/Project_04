@@ -4141,6 +4141,16 @@
 	top: 0;
 	left: 0;
 }
+#masking {
+	display: none;
+	z-index: 1100;
+	width: 100%;
+	height: 60%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0%;
+}
 #start_bt {
 	display: block;
 	z-index: 4;
@@ -4366,33 +4376,40 @@
 
 @keyframes loop{
     0%{
-    	top:7%;
-    	left:45%;
+    	top:52%;
+    	left:48%;
     }
     50%{
-    	top:7%;
-    	left:55%;
+    	top:52%;
+    	left:52%;
     }
     100%{
-        top:7%;
-        left:45%;    
+        top:52%;
+        left:48%;    
     }
 }
 
-#success {
-	display: none;
-	z-index: 1005;
-	width: 50%; 
-	height: 10%;
-	position: absolute;
-	transform: translate(-50%, -50%);
-	top: 7%;
-	left: 45%;
-	animation: loop 3s infinite;
+@keyframes masking_off{
+    0%{
+    	opacity: 0%;
+    }
+    100%{
+		opacity: 100%;
+    }
 }
+@keyframes masking_on{
+    0%{
+    	opacity: 100%;
+    }
+    100%{
+		opacity: 0%;
+    }
+}
+
+
 #gotomain {
 	display: none;
-	z-index: 1005;
+	z-index: 3001;
 	width: 50%; 
 	height: 21%;
 	position: absolute;
@@ -4408,5 +4425,15 @@
 	position: absolute;
 	transform: translate(-50%, -50%);
 	top: 52%;
-	left: 50%;
+	left: 48%;
+	animation: loop 3s infinite;
+}
+#finish {
+	display: none;
+	z-index: 3000;
+	width: 100%;
+	height: 60%;
+	position: absolute;
+	top: 0;
+	left: 0;
 }

@@ -19,11 +19,12 @@ var safe = document.getElementById('safe');
 var safe_number = document.getElementById('safe_number');
 var key = document.getElementById('key');
 var glass = document.getElementById('glass');
-var success = document.getElementById('success');
 var gotomain = document.getElementById('gotomain');
 var loading = document.getElementById('loading');
 var exit = document.getElementById('exit');
 var ending = document.getElementById('ending');
+var masking = document.getElementById('masking');
+var finish = document.getElementById('finish');
 
 //item 관련선언
 var item = [,,,,];
@@ -53,7 +54,7 @@ var safe_open = false;
 var subroom_open = false;
 var subroom_in = false;
 var glass_get = false;
-var backho_get = false;
+var baekho_get = false;
 
 
 
@@ -89,10 +90,10 @@ let images = [
     "../../images/safe_open.png",
     "../../images/key.png",
     "../../images/glass.png",
-    "../../images/success.png",
     "../../images/gotomain.png",
     "../../images/exit.png",
-    "../../images/ending.gif"];
+    "../../images/ending.gif",
+    "../../images/tobecontinued.png"];
 
 let images_pre = [];
 
@@ -122,7 +123,7 @@ window.onload = function(){
 document.addEventListener('click', function(event) {
 
     
-    if (backho_get) {
+    if (baekho_get) {
         return; // 메시지가 이미 표시되고 있을 때는 클릭 이벤트를 무시
     }
 
@@ -274,13 +275,11 @@ document.addEventListener('click', function(event) {
                 if(x > roomWidth * 0.25 && x < roomWidth * 0.75 && y > roomHeight * 0.3 && y < roomHeight * 0.7){ // 백호돌이 클릭
                     if(itemSelectName == 'glass'){
                         room.setAttribute('src', 'images/room1-3-3.png');
-                        backho_get = true;
-                        success.style.display = 'block';
+                        baekho_get = true;
                         bottom_img.setAttribute('src', 'images/bottom_success.png');
                         dark2.style.display = 'none';
                         return_img.style.display = 'none';
                         exit.style.display='block';
-                        //gotomain.style.display='block';
                         item_used('glass');
                         item_reset();
                     }
@@ -474,7 +473,6 @@ function item_get(itemName){
             else if(itemName=='glass'){
                 item[i].setAttribute('src', 'images/glass.png');
             }
-
             break;
         }
         else{
@@ -595,7 +593,7 @@ function safe_check(safe_value_next){
         console.log(safe_value);
     }
     safe_number.textContent = safe_value;
-    if(safe_value=='1942'){
+    if(safe_value=='2019'){
         safe_open = true;
         safe_number.style.display = 'none';
         safe.setAttribute('src', 'images/safe_open.png');
@@ -621,9 +619,22 @@ function safe_reset(){
 }
 
 exit.addEventListener('click', function(event) {
-    room.setAttribute('src', 'images/ending.gif');
     exit.style.display = 'none';
-    success.style.display = 'none';
+    masking.style.display = 'block';
+    masking.style.animation = "masking_off 1.5s 1";
+    setTimeout(() => {
+        masking.style.animation = "masking_on 1.5s 1";
+        room.setAttribute('src', 'images/ending.gif');
+    }, 1500);
+    setTimeout(() => {
+        masking.style.display = 'none';
+        finish.style.display = 'block';
+        gotomain.style.display='block';
+        finish.style.animation = "masking_off 4s 1";
+        gotomain.style.animation = "masking_off 4s 1"; 
+    }, 8000);
+    
+    
 });
 
 gotomain.addEventListener('click', function(event) {
