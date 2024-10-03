@@ -25,6 +25,8 @@ var exit = document.getElementById('exit');
 var ending = document.getElementById('ending');
 var masking = document.getElementById('masking');
 var finish = document.getElementById('finish');
+var hint_icon = document.getElementById('hint_icon');
+
 
 //item 관련선언
 var item = [,,,,];
@@ -55,6 +57,7 @@ var subroom_open = false;
 var subroom_in = false;
 var glass_get = false;
 var baekho_get = false;
+var memo_blue_get = false;
 
 
 
@@ -230,6 +233,7 @@ document.addEventListener('click', function(event) {
                         if(a < 0){clearInterval(interval);};
                     }, 100);
                 item_get('memo_blue');
+                memo_blue_get = true;
             }
             console.log('1');
         }
@@ -277,6 +281,7 @@ document.addEventListener('click', function(event) {
                         room.setAttribute('src', 'images/room1-3-3.png');
                         baekho_get = true;
                         bottom_img.setAttribute('src', 'images/bottom_success.png');
+                        hint_icon.style.display = 'none';
                         dark2.style.display = 'none';
                         return_img.style.display = 'none';
                         exit.style.display='block';
@@ -642,3 +647,16 @@ gotomain.addEventListener('click', function(event) {
     location.replace('https://gubaeki.github.io/Project_04');
 
 });
+
+hint_icon.addEventListener('click', function(event) {
+    if(subroom_open){
+        bottom_img.setAttribute('src', 'images/hint_3.png');
+    }
+    else if(memo_blue_get){
+        bottom_img.setAttribute('src', 'images/hint_2.png');
+    }
+    else{
+        bottom_img.setAttribute('src', 'images/hint_1.png');
+    }
+});
+
