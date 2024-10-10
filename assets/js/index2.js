@@ -49,12 +49,11 @@ start_bt.addEventListener('touchstart', (e) => {
     setTimeout(() => {
         dark.style.display = 'block';
         dark.style.animation = "masking_off 3s 1"; 
-    }, 6500);
+    }, 6000);
 
-    /*
     setTimeout(function(){ 
         location.href='room_second.html'
-    },6600);
-*/
+    },9000);
+
     e.preventDefault();
 });

@@ -7,6 +7,12 @@ var bottom_img = document.getElementById('bottom_img');
 var return_img = document.getElementById('return_img');
 var loading = document.getElementById('loading');
 var hint_icon = document.getElementById('hint_icon');
+var driver_bg = document.getElementById('driver_bg');
+var driver_item = document.getElementById('driver_item');
+var cover_large = document.getElementById('cover_large');
+var cover_small = document.getElementById('cover_small');
+var line_cut = document.getElementById('line_cut');
+var line_cut_small = document.getElementById('line_cut_small');
 
 
 //item 관련선언
@@ -23,7 +29,10 @@ var itemSelectName; //선택한 아이템 이름
 
 //기타 변수
 var room_number = 1;
-var hammer_get = false;
+var driver_get = false;
+var cover_open = false;
+var line_connection = false;
+
 var towel_open = false;
 var switch_open = true;
 var darkness = false;
@@ -48,7 +57,17 @@ var memo_blue_get = false;
 let images = [
     "../../images/bottom.png",
     "../../images/item.png",
-    "../../images/room2-1.png"];
+    "../../images/room2-1.png",
+    "../../images/room2-2.png",
+    "../../images/room2-3.png",
+    "../../images/cover_large.png",
+    "../../images/cover_small.png",
+    "../../images/driver_bg.png",
+    "../../images/driver_item.png",
+    "../../images/line_cut.png",
+    "../../images/line_cut_small.png"
+
+];
 
 let images_pre = [];
 
@@ -86,137 +105,94 @@ document.addEventListener('click', function(event) {
     var x = event.pageX;
     var y = event.pageY;
 
-    /*
-    if(memo_open){ // 터치이벤트가 발생했을때 쪽지가 열려있으면 닫기(파랑도 추가 필요)
-        console.log('1');
-        memo_red.style.display = 'none';
-        memo_open = false;
-        item[1].style.backgroundColor="transparent";
-        item[2].style.backgroundColor="transparent";
-        item[3].style.backgroundColor="transparent";
-        item[4].style.backgroundColor="transparent";
-    }*/
-
 
     if(room_number === 1){ // 메인룸
-        if(x > roomWidth * 0.85 && y < roomHeight * 0.4){ // 우측상단 소변기 클릭
-            room.setAttribute('src', 'images/room1-1.png');
-            return_img.style.display = 'block';
+        if(x > roomWidth * 0.05 && x < roomWidth * 0.21 && y < roomHeight * 0.52 && y > roomHeight * 0.35){ // 터치패드 클릭
             room_number = 2;
-            if(hammer_get == false){
-                hammer_bg.style.display = 'block';
-            }
-            if(tile_broken){
-                tile.style.display = 'block';
-                light.style.display = 'none';
-            }
-            else{
-                if(darkness){
-                    light.style.display = 'block';
-                    tile.style.display = 'none';
+            room.setAttribute('src', 'images/room2-2.png');
+            return_img.style.display = 'block';
+            cover_small.style.display = 'none';
+            line_cut_small.style.display = 'none';
+
+            if(cover_open){
+                cover_large.style.display = 'none';
+                if(line_connection){
+                    line_cut.style.display = 'none';
                 }
                 else{
-                    light.style.display = 'none';
-                    tile.style.display = 'none';
+                    line_cut.style.display = 'block';
                 }
             }
-            
-        }
-    
-        if(x > roomWidth * 0.5 && x < roomWidth * 0.67 && y < roomHeight * 0.5){ // 중앙 1사로 클릭
-            console.log("1사로");
-            if(wall_broken){
-                room.setAttribute('src', 'images/room1-2-1.png');
-            }
             else{
-                room.setAttribute('src', 'images/room1-2.png');
+                cover_large.style.display = 'block';
+                line_cut.style.display = 'block';
             }
-            return_img.style.display = 'block';
+
+        }
+        else if(x > roomWidth * 0.27 && x < roomWidth * 0.73 && y < roomHeight * 0.11){ // 천장 클릭
             room_number = 3;
-            
+            room.setAttribute('src', 'images/room2-3.png');
+            return_img.style.display = 'block';
+            cover_small.style.display = 'none';
+            cover_small.style.display = 'none';
+            line_cut_small.style.display = 'none';
+
+            if(driver_get == false){
+                driver_bg.style.display = 'block';
+            }
         }
 
-        if(x < roomWidth * 0.83 && x > roomWidth * 0.7 && y < roomHeight * 0.4){ // 우측상단 2사로 클릭
-            console.log("2사로");
-            if(subroom_open){
-                room.setAttribute('src', 'images/room1-3-1.png');
+    }
+
+    else if(room_number === 2){ // 터치패드
+        if(x < roomWidth * 0.2 && y > roomHeight * 0.83 && y < roomHeight * 0.97){ // 메인룸 돌아가기
+            room.setAttribute('src', 'images/room2-1.png');
+            return_img.style.display = 'none';
+            cover_large.style.display = 'none';
+            line_cut.style.display = 'none';
+            room_number = 1;
+            if(cover_open){
+                cover_small.style.display = 'none';
+                if(line_connection){
+                    line_cut_small.style.display = 'none';
+                }
+                else{
+                    line_cut_small.style.display = 'block';
+                }
             }
             else{
-                room.setAttribute('src', 'images/room1-3.png');
-            }
-            return_img.style.display = 'block';
-            room_number = 4;
-        }
-
-        if(x < roomWidth * 0.2 && y > roomHeight * 0.3 && y < roomHeight * 0.8){ // 좌측면(정문) 클릭
-            console.log("정문");
-            room.setAttribute('src', 'images/room1-4.png');
-            return_img.style.display = 'block';
-            room_number = 5;
-            if(towel_open == true){
-                towel_min.style.display = 'block';
-            }
-            if(switch_open == false){
-                switch_Off.style.display = 'block';
+                cover_small.style.display = 'block';
+                line_cut_small.style.display = 'block';
+                
             }
         }
-    }
-
-    else if(room_number === 2){ // 소변기 구석
-        if(x < roomWidth * 0.2 && y > roomHeight * 0.83 && y < roomHeight * 0.97){ // 메인룸 돌아가기
-            room.setAttribute('src', 'images/room1.png');
-            return_img.style.display = 'none';
-            memo_bg_blue.style.display = 'none';
-            hammer_bg.style.display = 'none';
-            tile.style.display = 'none';
-            light.style.display = 'none';
-            room_number = 1;
-        }
-        if(x < roomWidth * 0.6 && x > roomWidth * 0.5 && y > roomHeight * 0.62 && y < roomHeight * 0.72){ // 빛 위치 클릭
-            if(darkness && tile_broken == false){
-                light.style.display = 'none';
-                tile.style.display = 'block';
-                tile_broken = true;
-                memo_bg_blue.style.display = 'block';
-                var a = 1;
-                    var interval = setInterval(function(){
-                        memo_bg_blue.style.opacity = a;
-                        a = a - 0.1;
-                        if(a < 0){clearInterval(interval);};
-                    }, 100);
-                item_get('memo_blue');
-                memo_blue_get = true;
-            }
-            console.log('1');
-        }
-
-    }
-
-    else if(room_number === 3){ // 1사로
-        if(x < roomWidth * 0.2 && y > roomHeight * 0.8){ // 메인룸 돌아가기
-            room.setAttribute('src', 'images/room1.png');
-            return_img.style.display = 'none';
-            memo_bg_red.style.display = 'none';
-            room_number = 1;
-        }
-        if(x < roomWidth * 0.78 && x > roomWidth * 0.67 && y > roomHeight * 0.35 && y < roomHeight * 0.45){ // 균열 클릭
-            if(itemSelectName === 'hammer'){
-                room.setAttribute('src', 'images/room1-2-1.png');
-                memo_bg_red.style.display = 'block';
-                wall_broken = true;
+        else if(x < roomWidth * 0.73 && x > roomWidth * 0.3 && y > roomHeight * 0.75 && y < roomHeight * 0.97){ // 커버 클릭
+            if(itemSelectName === 'driver'){
+                cover_open = true;
                 var a = 1;
                 var interval = setInterval(function(){
-                    memo_bg_red.style.opacity = a;
+                    cover_large.style.opacity = a;
                     a = a - 0.1;
                     if(a < 0){clearInterval(interval);};
                 }, 100);
 
-                item_used('hammer');
+                item_used('driver');
                 item_reset();
-                item_get('memo_red');
-
             }
         }
+    }
+
+    else if(room_number === 3){ // 천장
+        if(x < roomWidth * 0.2 && y > roomHeight * 0.8){ // 메인룸 돌아가기
+            room.setAttribute('src', 'images/room2-1.png');
+            return_img.style.display = 'none';
+            driver_bg.style.display = 'none';
+            room_number = 1;
+            if(cover_open == false){
+                cover_small.style.display = 'block';
+            }
+        }
+
     }
     
     else if(room_number === 4){ // 2사로
@@ -322,26 +298,19 @@ document.addEventListener('click', function(event) {
             safe_reset();
         }
     }
+
+
+
+
 });
 
-// 해머 발견
-hammer_bg.addEventListener('click', function(event) {
-    hammer_bg.style.display = 'none';
-    hammer_get = true;
-    item_get('hammer');
+// 드라이버 발견
+driver_bg.addEventListener('click', function(event) {
+    driver_bg.style.display = 'none';
+    driver_get = true;
+    item_get('driver');
 });
 
-// 메모 닫기
-memo_red.addEventListener('click', function(event) {
-    memo_red.style.display = 'none';
-    memo_open = false;
-    item_reset();
-});
-memo_blue.addEventListener('click', function(event) {
-    memo_blue.style.display = 'none';
-    memo_open = false;
-    item_reset();
-});
 
 // 아이템컨테이너에서 아이템 선택 시
 item[1].addEventListener('click', function(event) {
@@ -358,7 +327,7 @@ item[1].addEventListener('click', function(event) {
         itemSelectNum = 1;
         itemSelectName = itemFillName[itemSelectNum];
     }
-    memo_check(itemSelectName);
+
 });
 item[2].addEventListener('click', function(event) {
     if(itemSelectNum === 2){
@@ -374,7 +343,7 @@ item[2].addEventListener('click', function(event) {
         itemSelectNum = 2;
         itemSelectName = itemFillName[itemSelectNum];
     }
-    memo_check(itemSelectName);
+
 });
 item[3].addEventListener('click', function(event) {
     if(itemSelectNum === 3){
@@ -390,7 +359,7 @@ item[3].addEventListener('click', function(event) {
         itemSelectNum = 3;
         itemSelectName = itemFillName[itemSelectNum];
     }
-    memo_check(itemSelectName);
+
 });
 item[4].addEventListener('click', function(event) {
     if(itemSelectNum === 4){
@@ -406,7 +375,7 @@ item[4].addEventListener('click', function(event) {
         itemSelectNum = 4;
         itemSelectName = itemFillName[itemSelectNum];
     }
-    memo_check(itemSelectName);
+
 });
 
 function item_get(itemName){
@@ -415,20 +384,11 @@ function item_get(itemName){
     for(i=1;i<5;i++){
         if(itemFillName[i]=='none'){
             itemFillName[i] = itemName;
-            if(itemName=='hammer'){
-                item[i].setAttribute('src', 'images/hammer_item.png');
+            if(itemName=='driver'){
+                item[i].setAttribute('src', 'images/driver_item.png');
             }
-            else if(itemName=='memo_red'){
-                item[i].setAttribute('src', 'images/memo_bg_red.png');
-            }
-            else if(itemName=='memo_blue'){
-                item[i].setAttribute('src', 'images/memo_bg_blue.png');
-            }
-            else if(itemName=='key'){
-                item[i].setAttribute('src', 'images/key.png');
-            }
-            else if(itemName=='glass'){
-                item[i].setAttribute('src', 'images/glass.png');
+            else if(itemName=='line'){
+                //item[i].setAttribute('src', 'images/memo_bg_red.png');
             }
             break;
         }
@@ -437,6 +397,7 @@ function item_get(itemName){
         }
     } 
 }
+
 function item_used(itemName){
     console.log('item used');
     var i;
@@ -462,31 +423,9 @@ function item_reset(){
 }
 
 
-function memo_check(itemSelectName){
-    if(memo_open){
-        memo_red.style.display = 'none';
-        memo_blue.style.display = 'none';
-        memo_open = false;
-        item[1].style.backgroundColor="transparent";
-        item[2].style.backgroundColor="transparent";
-        item[3].style.backgroundColor="transparent";
-        item[4].style.backgroundColor="transparent";
-    }
-    else{
-        if(itemSelectName=='memo_red'){
-            memo_red.style.display = 'block';
-            memo_blue.style.display = 'none';
-            memo_open = true;
-        }
-        else if(itemSelectName=='memo_blue'){
-            memo_blue.style.display = 'block';
-            memo_red.style.display = 'none';
-            memo_open = true;
-        }
-    }
-}
 
 // 금고 비밀번호 입력
+/*
 safe.addEventListener('click', function(event) {
     var x = event.pageX;
     var y = event.pageY;
@@ -530,51 +469,8 @@ safe.addEventListener('click', function(event) {
     event.preventDefault();
     
 });
-
-//금고 비밀번호 체크 함수
-function safe_check(safe_value_next){
-    if(safe_count === 0){
-        safe_value = safe_value_next;
-        safe_count++;
-        console.log(safe_value);
-    }
-    else{
-        if(safe_count === 4){
-            safe_value = safe_value_next;
-            safe_count = 1;
-        }
-        else{
-            safe_value = safe_value + safe_value_next;
-            safe_count++;
-        }
-        console.log(safe_value);
-    }
-    safe_number.textContent = safe_value;
-    if(safe_value=='2019'){
-        safe_open = true;
-        safe_number.style.display = 'none';
-        safe.setAttribute('src', 'images/safe_open.png');
-        key.style.display = 'block';
-        var a = 1;
-        var interval = setInterval(function(){
-            key.style.opacity = a;
-            a = a - 0.1;
-            if(a < 0){clearInterval(interval);};
-        }, 100);
-
-        item_used('memo_red');
-        item_used('memo_blue');
-        item_reset();
-        item_get('key');
-        
-    }
-} 
-function safe_reset(){
-    safe_count = 0;
-    safe_value = 0;
-    safe_number.textContent = '';
-}
-
+*/
+/*
 exit.addEventListener('click', function(event) {
     exit.style.display = 'none';
     masking.style.display = 'block';
@@ -599,6 +495,7 @@ gotomain.addEventListener('click', function(event) {
     location.replace('https://gubaeki.github.io/Project_04');
 
 });
+*/
 
 hint_icon.addEventListener('click', function(event) {
     if(subroom_open){
@@ -611,4 +508,3 @@ hint_icon.addEventListener('click', function(event) {
         bottom_img.setAttribute('src', 'images/hint_1.png');
     }
 });
-
