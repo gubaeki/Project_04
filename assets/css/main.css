@@ -4471,7 +4471,7 @@
 }
 #cover_large {
 	display: none;
-	z-index: 4;
+	z-index: 5;
 	width: 100%;
 	height: 60%;
 	position: absolute;
@@ -4479,7 +4479,7 @@
 	left: 0;
 }
 #cover_small {
-	z-index: 4;
+	z-index: 5;
 	width: 9%; 
 	height: 4.3%;
 	position: absolute;
@@ -4505,4 +4505,153 @@
 	transform: translate(-50%, -50%);
 	top: 29.9%;
 	left: 14%;
+}
+#crowbar {
+	z-index: 4;
+	width: 22%; 
+	height: 12%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 48%;
+	left: 13%;
+}
+#room2-1_inner {
+	width: 100%;
+	height: 60%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+#room2-1_inner_bg {
+	z-index: 0.4;
+	width: 100%;
+	height: 60%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+#door_right {
+	z-index: 1;
+	width: 100%;
+	height: 60%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+#door_left {
+	z-index: 1;
+	width: 100%;
+	height: 60%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+#line_item {
+	display: none;
+	z-index: 4;
+	width: 22%; 
+	height: 10%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+}
+#lever_up {
+	display: none;
+	z-index: 0.5;
+	width: 22%; 
+	height: 10%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 23.5%;
+	left: 63%;
+}
+#lever_down {
+	z-index: 0.5;
+	width: 22%; 
+	height: 10%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 23.5%;
+	left: 63%;
+}
+#cable1 {
+	z-index: 0.5;
+	width: 12.3%; 
+	height: 5.5%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 35.8%;
+	left: 39.5%;
+}
+#cable2 {
+	z-index: 0.5;
+	width: 12.3%; 
+	height: 5.5%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 35.8%;
+	left: 51.9%;
+}
+
+#cable3 {
+	z-index: 0.5;
+	width: 12.3%; 
+	height: 5.5%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 35.8%;
+	left: 64.2%;
+}
+#cable4 {
+	z-index: 0.5;
+	width: 12.3%; 
+	height: 5.5%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 41.3%;
+	left: 39.5%;
+}
+#cable5 {
+	z-index: 0.5;
+	width: 12.3%; 
+	height: 5.5%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 41.3%;
+	left: 51.9%;
+}
+#cable6 {
+	z-index: 0.5;
+	width: 12.3%; 
+	height: 5.5%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 41.3%;
+	left: 64.2%;
+}
+#cable7 {
+	z-index: 0.5;
+	width: 12.3%; 
+	height: 5.5%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 46.8%;
+	left: 39.5%;
+}
+#cable8 {
+	z-index: 0.5;
+	width: 12.3%; 
+	height: 5.5%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 46.8%;
+	left: 51.9%;
+}
+#cable9 {
+	z-index: 0.5;
+	width: 12.3%; 
+	height: 5.5%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 46.8%;
+	left: 64.2%;
 }
