@@ -13,6 +13,14 @@ var cover_large = document.getElementById('cover_large');
 var cover_small = document.getElementById('cover_small');
 var line_cut = document.getElementById('line_cut');
 var line_cut_small = document.getElementById('line_cut_small');
+var crowbar = document.getElementById('crowbar');
+var door_left = document.getElementById('door_left');
+var door_right = document.getElementById('door_right');
+var line_item = document.getElementById('line_item');
+var lever_down = document.getElementById('lever_down');
+var lever_up = document.getElementById('lever_up');
+var room21_inner_bg = document.getElementById('room2-1_inner_bg');
+var room21_inner = document.getElementById('room2-1_inner');
 
 
 //item 관련선언
@@ -26,12 +34,26 @@ var itemFillName = ['base','none','none','none','none']; //채워진 아이템 �
 var itemSelectNum = 0; //선택한 아이템 번호
 var itemSelectName; //선택한 아이템 이름
 
+//cable 관련선언
+var cable = [];
+cable[0] = document.getElementById('cable1');
+cable[1] = document.getElementById('cable2');
+cable[2] = document.getElementById('cable4');
+cable[3] = document.getElementById('cable5');
+cable[4] = document.getElementById('cable6');
+cable[5] = document.getElementById('cable7');
+cable[6] = document.getElementById('cable8');
+cable[7] = document.getElementById('cable9');
+
 
 //기타 변수
 var room_number = 1;
 var driver_get = false;
 var cover_open = false;
 var line_connection = false;
+var crowbar_get = false;
+var door_open = false;
+var line_get = false;
 
 var towel_open = false;
 var switch_open = true;
@@ -65,7 +87,22 @@ let images = [
     "../../images/driver_bg.png",
     "../../images/driver_item.png",
     "../../images/line_cut.png",
-    "../../images/line_cut_small.png"
+    "../../images/line_cut_small.png",
+    "../../images/crowbar.png",
+    "../../images/room2-1_inner.png",
+    "../../images/door_left.png",
+    "../../images/door_right.png",
+    "../../images/line_item.png",
+    "../../images/lever_down.png",
+    "../../images/lever_up.png",
+    "../../images/1.png",
+    "../../images/2.png",
+    "../../images/4.png",
+    "../../images/5.png",
+    "../../images/6.png",
+    "../../images/7.png",
+    "../../images/8.png",
+    "../../images/9.png"
 
 ];
 
@@ -113,6 +150,7 @@ document.addEventListener('click', function(event) {
             return_img.style.display = 'block';
             cover_small.style.display = 'none';
             line_cut_small.style.display = 'none';
+            crowbar.style.display = 'none';
 
             if(cover_open){
                 cover_large.style.display = 'none';
@@ -136,9 +174,38 @@ document.addEventListener('click', function(event) {
             cover_small.style.display = 'none';
             cover_small.style.display = 'none';
             line_cut_small.style.display = 'none';
+            crowbar.style.display = 'none';
 
             if(driver_get == false){
                 driver_bg.style.display = 'block';
+            }
+            
+
+        }
+        else if(x > roomWidth * 0.06 && x < roomWidth * 0.22 && y > roomHeight * 0.69 && y < roomHeight * 0.90){ // crowbar 클릭
+            if(crowbar_get == false){
+                crowbar.style.display = 'none';
+                crowbar_get = true;
+                item_get('crowbar');
+                item_reset();
+            } 
+        }
+        else if(x > roomWidth * 0.4 && x < roomWidth * 0.60 && y > roomHeight * 0.25 && y < roomHeight * 0.85){ // 중앙 엘리베이터 문 클릭
+            if(itemSelectName == 'crowbar'){
+                item_used('crowbar');
+                item_reset();
+
+                door_open = true;
+                door_left.style.display = 'none';  // 추후 옆으로 열리는 애니메이션 구현 예정
+                door_right.style.display = 'none'; // 추후 옆으로 열리는 애니메이션 구현 예정
+            }
+
+        }
+        else if(x > roomWidth * 0.80 && x < roomWidth * 0.95 && y > roomHeight * 0.05 && y < roomHeight * 0.15){ // CCTV 클릭
+            if(line_get == false){
+                line_get = true;
+                item_get('line');
+                item_reset();
             }
         }
 
@@ -151,6 +218,7 @@ document.addEventListener('click', function(event) {
             cover_large.style.display = 'none';
             line_cut.style.display = 'none';
             room_number = 1;
+
             if(cover_open){
                 cover_small.style.display = 'none';
                 if(line_connection){
@@ -165,6 +233,9 @@ document.addEventListener('click', function(event) {
                 line_cut_small.style.display = 'block';
                 
             }
+            if(crowbar_get == false){
+                crowbar.style.display = 'block';
+            }
         }
         else if(x < roomWidth * 0.73 && x > roomWidth * 0.3 && y > roomHeight * 0.75 && y < roomHeight * 0.97){ // 커버 클릭
             if(itemSelectName === 'driver'){
@@ -172,9 +243,12 @@ document.addEventListener('click', function(event) {
                 var a = 1;
                 var interval = setInterval(function(){
                     cover_large.style.opacity = a;
-                    a = a - 0.1;
+                    a = a - 0.3;
                     if(a < 0){clearInterval(interval);};
-                }, 100);
+                }, 50);
+                setTimeout(() => {
+                    cover_large.style.display = 'none';
+                }, 150);
 
                 item_used('driver');
                 item_reset();
@@ -188,8 +262,23 @@ document.addEventListener('click', function(event) {
             return_img.style.display = 'none';
             driver_bg.style.display = 'none';
             room_number = 1;
-            if(cover_open == false){
+
+            if(cover_open){
+                cover_small.style.display = 'none';
+                if(line_connection){
+                    line_cut_small.style.display = 'none';
+                }
+                else{
+                    line_cut_small.style.display = 'block';
+                }
+            }
+            else{
                 cover_small.style.display = 'block';
+                line_cut_small.style.display = 'block';
+                
+            }
+            if(crowbar_get == false){
+                crowbar.style.display = 'block';
             }
         }
 
@@ -309,6 +398,16 @@ driver_bg.addEventListener('click', function(event) {
     driver_bg.style.display = 'none';
     driver_get = true;
     item_get('driver');
+    item_reset();
+});
+// 전선 사용
+line_cut.addEventListener('click', function(event) {
+    if(itemSelectName === 'line'){
+        line_connection = true;
+        line_cut.style.display = 'none';
+        item_used('line');
+        item_reset();
+    }
 });
 
 
@@ -387,8 +486,11 @@ function item_get(itemName){
             if(itemName=='driver'){
                 item[i].setAttribute('src', 'images/driver_item.png');
             }
+            else if(itemName=='crowbar'){
+                item[i].setAttribute('src', 'images/crowbar.png');
+            }
             else if(itemName=='line'){
-                //item[i].setAttribute('src', 'images/memo_bg_red.png');
+                item[i].setAttribute('src', 'images/line_item.png');
             }
             break;
         }
