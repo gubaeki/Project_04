@@ -4537,6 +4537,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;
+	pointer-events: none;
 }
 #door_left {
 	z-index: 1;
@@ -4545,6 +4546,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;
+	pointer-events: none;
 }
 #line_item {
 	display: none;
@@ -4575,27 +4577,27 @@
 }
 #cable1 {
 	z-index: 0.5;
-	width: 12.3%; 
-	height: 5.5%;
+	width: 12.44%; 
+	height: 5.53%;
 	position: absolute;
 	transform: translate(-50%, -50%);
-	top: 35.8%;
-	left: 39.5%;
+	top: 41.33%;
+	left: 51.85%;
 }
 #cable2 {
 	z-index: 0.5;
-	width: 12.3%; 
-	height: 5.5%;
+	width: 12.44%; 
+	height: 5.53%;
 	position: absolute;
 	transform: translate(-50%, -50%);
-	top: 35.8%;
-	left: 51.9%;
+	top: 41.33%;
+	left: 39.5%;
 }
 
 #cable3 {
 	z-index: 0.5;
-	width: 12.3%; 
-	height: 5.5%;
+	width: 12.44%; 
+	height: 5.53%;
 	position: absolute;
 	transform: translate(-50%, -50%);
 	top: 35.8%;
@@ -4603,55 +4605,101 @@
 }
 #cable4 {
 	z-index: 0.5;
-	width: 12.3%; 
-	height: 5.5%;
+	width: 12.44%; 
+	height: 5.53%;
 	position: absolute;
 	transform: translate(-50%, -50%);
-	top: 41.3%;
+	top: 46.86%;
 	left: 39.5%;
 }
 #cable5 {
 	z-index: 0.5;
-	width: 12.3%; 
-	height: 5.5%;
+	width: 12.44%; 
+	height: 5.53%;
 	position: absolute;
 	transform: translate(-50%, -50%);
-	top: 41.3%;
-	left: 51.9%;
+	top: 46.86%;
+	left: 51.85%;
 }
 #cable6 {
 	z-index: 0.5;
-	width: 12.3%; 
-	height: 5.5%;
+	width: 12.44%; 
+	height: 5.53%;
 	position: absolute;
 	transform: translate(-50%, -50%);
-	top: 41.3%;
-	left: 64.2%;
+	top: 35.8%;
+	left: 51.85%;
 }
 #cable7 {
 	z-index: 0.5;
-	width: 12.3%; 
-	height: 5.5%;
+	width: 12.44%; 
+	height: 5.53%;
 	position: absolute;
 	transform: translate(-50%, -50%);
-	top: 46.8%;
-	left: 39.5%;
+	top: 46.86%;
+	left: 64.2%;
 }
 #cable8 {
 	z-index: 0.5;
-	width: 12.3%; 
-	height: 5.5%;
+	width: 12.44%; 
+	height: 5.53%;
 	position: absolute;
 	transform: translate(-50%, -50%);
-	top: 46.8%;
-	left: 51.9%;
+	top: 35.8%;
+	left: 39.5%;
 }
 #cable9 {
 	z-index: 0.5;
-	width: 12.3%; 
-	height: 5.5%;
+	width: 12.44%; 
+	height: 5.53%;
 	position: absolute;
 	transform: translate(-50%, -50%);
-	top: 46.8%;
+	top: 41.33%;
 	left: 64.2%;
+}
+@keyframes jiggle_lever{
+    0%{
+    	left:63%;
+    }
+    33%{
+    	left:62.5%;
+    }
+	66%{
+
+    	left:63.5%;
+    }
+    100%{
+        left:63%    
+    }
+}
+#pass_lever {
+	display: none;
+	z-index: 100;
+	width: 85%; 
+	height: 40%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 30%;
+	left: 50%;
+	touch-action: none;
+}
+#pass_lever_light {
+	display: none;
+	z-index: 0.6;
+	width: 19.5%; 
+	height: 6%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 22.7%;
+	left: 41.5%;
+}
+#close {
+	display: none;
+	z-index: 101;
+	width: 10%; 
+	height: 4.5%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 13%;
+	left: 84%;
 }
