@@ -4516,6 +4516,7 @@
 	left: 13%;
 }
 #room2-1_inner {
+	z-index: 0;
 	width: 100%;
 	height: 60%;
 	position: absolute;
@@ -4523,7 +4524,7 @@
 	left: 0;
 }
 #room2-1_inner_bg {
-	z-index: 0.4;
+	z-index: 0;
 	width: 100%;
 	height: 60%;
 	position: absolute;
@@ -4702,4 +4703,89 @@
 	transform: translate(-50%, -50%);
 	top: 13%;
 	left: 84%;
+}
+#pass1 {
+	display: none;
+	z-index: 101;
+	width: 10%; 
+	height: 4.5%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	background-color: black;
+	color : white;
+	border: 4px solid white;
+	border-radius: 3%;
+	font-size: 5vw;
+	font-weight: 700;
+	top: 32%;
+	left: 23%;
+}
+#pass2 {
+	display: none;
+	z-index: 101;
+	width: 10%; 
+	height: 4.5%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	background-color: black;
+	color : white;
+	border: 4px solid white;
+	border-radius: 3%;
+	font-size: 5vw;
+	font-weight: 700;
+	top: 32%;
+	left: 41%;
+}
+#pass3 {
+	display: none;
+	z-index: 101;
+	width: 10%; 
+	height: 4.5%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	background-color: black;
+	color : white;
+	border: 4px solid white;
+	border-radius: 3%;
+	font-size: 5vw;
+	font-weight: 700;
+	top: 32%;
+	left: 59%;
+}
+#pass4 {
+	display: none;
+	z-index: 101;
+	width: 10%; 
+	height: 4.5%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	background-color: black;
+	color : white;
+	border: 4px solid white;
+	border-radius: 3%;
+	font-size: 5vw;
+	font-weight: 700;
+	top: 32%;
+	left: 77%;
+}
+#spark {
+	display: none;
+	z-index: 100;
+	width: 85%; 
+	height: 40%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 30%;
+	left: 50%;
+	touch-action: none;
+}
+#lever_light {
+	display: none;
+	width: 18%; 
+	height: 10%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 24%;
+	left: 62.3%;
+	pointer-events: none;
 }
