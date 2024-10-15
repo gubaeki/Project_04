@@ -24,6 +24,10 @@ var room21_inner = document.getElementById('room2-1_inner');
 var pass_lever_light = document.getElementById('pass_lever_light');
 var pass_lever = document.getElementById('pass_lever');
 var close = document.getElementById('close');
+var spark = document.getElementById('spark');
+var lever_light = document.getElementById('lever_light');
+
+
 
 
 //item 관련선언
@@ -52,6 +56,17 @@ cable[8] = document.getElementById('cable9'); cable_position[8] = 6;
 var cable_select = 0;
 var cable_empty = 3;
 
+//password 관련선언
+var pass = [];
+pass[0] = document.getElementById('pass1');
+pass[1] = document.getElementById('pass2');
+pass[2] = document.getElementById('pass3');
+pass[3] = document.getElementById('pass4');
+var pass1_num=0;
+var pass2_num=0;
+var pass3_num=0;
+var pass4_num=0;
+var pass_type_check = 0; // pass_lever 창 오픈되는 동시에 pass2_num 증가하는 문제 해결하기 위한 변수
 
 //기타 변수
 var room_number = 1;
@@ -64,6 +79,8 @@ var line_get = false;
 var puzzle_clear = false;
 var electrical_connection = false;
 var pass_lever_open = false;
+var password_matching = false;
+
 
 var towel_open = false;
 var switch_open = true;
@@ -112,7 +129,8 @@ let images = [
     "../../images/6.png",
     "../../images/7.png",
     "../../images/8.png",
-    "../../images/9.png"
+    "../../images/9.png",
+    "../../images/spark.png"
 
 ];
 
@@ -151,16 +169,53 @@ document.addEventListener('click', function(event) {
     var y = event.pageY;
 
 
-    // 비밀번호 레버창 열려있을 시 창 닫기
-    if (pass_lever_open && (y < roomHeight * 0.2 ||  y > roomHeight * 0.8)) {
-        pass_lever.style.display = 'none';
-        pass_lever_open = false;
-        close.style.display = 'none';
-        return; // 메시지가 이미 표시되고 있을 때는 클릭 이벤트를 무시
+    // 비밀번호 레버창 열려있을 때
+    if(pass_lever_open){
+        pass_type_check++;
+        if (y < roomHeight * 0.2 ||  y > roomHeight * 0.8) { // 비밀번호 레버창 닫기
+            pass_lever.style.display = 'none';
+            pass_lever_open = false;
+            close.style.display = 'none';
+            pass[0].style.display = 'none'; pass[1].style.display = 'none'; pass[2].style.display = 'none'; pass[3].style.display = 'none';
+            spark.style.display = 'none';
+            pass_type_check = 0;
+            return; // 메시지가 이미 표시되고 있을 때는 클릭 이벤트를 무시
+        }
+         // 비밀번호 숫자 변경
+        else if(x > roomWidth * 0.16 && x < roomWidth * 0.3 && y < roomHeight * 0.48 && y > roomHeight * 0.36 && pass_type_check > 1 && password_matching == false){
+            pass1_num++;
+            if(pass1_num>9){pass1_num=0;}
+            pass[0].textContent = pass1_num;
+        }
+        else if(x > roomWidth * 0.34 && x < roomWidth * 0.48 && y < roomHeight * 0.48 && y > roomHeight * 0.36 && pass_type_check > 1 && password_matching == false){
+            pass2_num++;
+            if(pass2_num>9){pass2_num=0;}
+            pass[1].textContent = pass2_num;
+        }
+        else if(x > roomWidth * 0.52 && x < roomWidth * 0.66 && y < roomHeight * 0.48 && y > roomHeight * 0.36 && pass_type_check > 1 && password_matching == false){
+            pass3_num++;
+            if(pass3_num>9){pass3_num=0;}
+            pass[2].textContent = pass3_num;
+        }
+        else if(x > roomWidth * 0.70 && x < roomWidth * 0.84 && y < roomHeight * 0.48 && y > roomHeight * 0.36 && pass_type_check > 1 && password_matching == false){
+            pass4_num++;
+            if(pass4_num>9){pass4_num=0;}
+            pass[3].textContent = pass4_num;
+        }
+        if(pass1_num === 0 && pass2_num === 4 && pass3_num === 2 && pass4_num === 1){
+            console.log('정답');
+            password_matching = true;
+            electrical_connection = true;
+            spark.style.display = 'block';
+            lever_light.style.display = 'block';
+            
+        }
+        
     }
+    
 
     if(room_number === 1){ // 메인룸
-        if(x > roomWidth * 0.05 && x < roomWidth * 0.21 && y < roomHeight * 0.52 && y > roomHeight * 0.35){ // 터치패드 클릭
+        if(x > roomWidth * 0.05 && x < roomWidth * 0.21 && y < roomHeight * 0.52 && y > roomHeight * 0.35 && pass_lever_open == false){ // 터치패드 클릭
             room_number = 2;
             room.setAttribute('src', 'images/room2-2.png');
             return_img.style.display = 'block';
@@ -227,7 +282,11 @@ document.addEventListener('click', function(event) {
                 item_reset();
             }
         }
-
+        else if(x > roomWidth * 0.81 && x < roomWidth * 0.92 && y > roomHeight * 0.42 && y < roomHeight * 0.60){ // 엘리베이터 버튼 클릭
+            console.log('엘리베이터 버튼 클릭');
+           
+        }
+        
     }
 
     else if(room_number === 2){ // 터치패드
@@ -442,13 +501,13 @@ lever_down.addEventListener('click', function(event) {
         setTimeout(() => {
             lever_down.style.animation = "none";
         }, 300);
-        console.log('aa');
     }
 });
 // 패스워드 레버 클릭(퍼즐 클리어 후)
 pass_lever_light.addEventListener('click', function(event) {
     pass_lever.style.display = 'block';
     close.style.display = 'block';
+    pass[0].style.display = 'block'; pass[1].style.display = 'block'; pass[2].style.display = 'block'; pass[3].style.display = 'block';
     pass_lever_open = true;
 });
 // 패스워드 레버 창에서 닫기 버튼 클릭
@@ -456,7 +515,11 @@ close.addEventListener('click', function(event) {
     pass_lever.style.display = 'none';
     pass_lever_open = false;
     close.style.display = 'none';
+    pass[0].style.display = 'none'; pass[1].style.display = 'none'; pass[2].style.display = 'none'; pass[3].style.display = 'none';
+    spark.style.display = 'none';
+    pass_type_check = 0;
 });
+
 
 //---------------------------------------- 슬라이딩 퍼즐----------------------------------------------
 cable[0].addEventListener('click', function(event) {
