@@ -26,8 +26,12 @@ var pass_lever = document.getElementById('pass_lever');
 var close = document.getElementById('close');
 var spark = document.getElementById('spark');
 var lever_light = document.getElementById('lever_light');
-
-
+var cctv_before = document.getElementById('cctv_before');
+var nipper_bg = document.getElementById('nipper_bg');
+var floor = document.getElementById('floor');
+var light_1 = document.getElementById('light_1');
+var exit = document.getElementById('exit');
+var masking = document.getElementById('masking');
 
 
 //item 관련선언
@@ -72,32 +76,17 @@ var pass_type_check = 0; // pass_lever 창 오픈되는 동시에 pass2_num 증�
 var room_number = 1;
 var driver_get = false;
 var cover_open = false;
-var line_connection = false;
+var line_connection = false;  
 var crowbar_get = false;
 var door_open = false;
 var line_get = false;
 var puzzle_clear = false;
-var electrical_connection = false;
+var electrical_connection = true;   // --------------------------------------------------------------------------------------------테스트 할땐 true 평소엔 false
 var pass_lever_open = false;
 var password_matching = false;
-
-
-var towel_open = false;
-var switch_open = true;
-var darkness = false;
-var memo_open = false;
-var wall_broken = false;
-var tile_broken = false;
-var safe_value;
-var safe_value_next;
-var safe_count = 0;
-var safe_open = false;
-var subroom_open = false;
-var subroom_in = false;
-var glass_get = false;
-var baekho_get = false;
-var memo_blue_get = false;
-
+var nipper_get = false;
+var clear = false;
+var press_1 = false;
 
 
 //---------------------------------------------------------------
@@ -168,6 +157,9 @@ document.addEventListener('click', function(event) {
     var x = event.pageX;
     var y = event.pageY;
 
+    if(press_1){ // 탈출완료 시 터치액션 방지
+        return;
+    }
 
     // 비밀번호 레버창 열려있을 때
     if(pass_lever_open){
@@ -222,6 +214,8 @@ document.addEventListener('click', function(event) {
             cover_small.style.display = 'none';
             line_cut_small.style.display = 'none';
             crowbar.style.display = 'none';
+            cctv_before.style.display = 'none';
+            floor.style.display = 'none';
 
             if(cover_open){
                 cover_large.style.display = 'none';
@@ -236,6 +230,9 @@ document.addEventListener('click', function(event) {
                 cover_large.style.display = 'block';
                 line_cut.style.display = 'block';
             }
+            if(nipper_get == false){
+                nipper_bg.style.display = 'block';
+            }
 
         }
         else if(x > roomWidth * 0.27 && x < roomWidth * 0.73 && y < roomHeight * 0.11){ // 천장 클릭
@@ -246,6 +243,8 @@ document.addEventListener('click', function(event) {
             cover_small.style.display = 'none';
             line_cut_small.style.display = 'none';
             crowbar.style.display = 'none';
+            cctv_before.style.display = 'none';
+            floor.style.display = 'none';
 
             if(driver_get == false){
                 driver_bg.style.display = 'block';
@@ -275,15 +274,21 @@ document.addEventListener('click', function(event) {
             }
 
         }
-        else if(x > roomWidth * 0.80 && x < roomWidth * 0.95 && y > roomHeight * 0.05 && y < roomHeight * 0.15){ // CCTV 클릭
-            if(line_get == false){
-                line_get = true;
-                item_get('line');
-                item_reset();
-            }
-        }
         else if(x > roomWidth * 0.81 && x < roomWidth * 0.92 && y > roomHeight * 0.42 && y < roomHeight * 0.60){ // 엘리베이터 버튼 클릭
             console.log('엘리베이터 버튼 클릭');
+            if(clear){
+                room_number = 4;
+                room.setAttribute('src', 'images/room2-4.png');
+                return_img.style.display = 'block';
+                cover_small.style.display = 'none';
+                cover_small.style.display = 'none';
+                line_cut_small.style.display = 'none';
+                crowbar.style.display = 'none';
+                cctv_before.style.display = 'none';
+                nipper_bg.style.display = 'none';
+                floor.style.display = 'none';
+            }
+            
            
         }
         
@@ -295,6 +300,7 @@ document.addEventListener('click', function(event) {
             return_img.style.display = 'none';
             cover_large.style.display = 'none';
             line_cut.style.display = 'none';
+            nipper_bg.style.display = 'none';
             room_number = 1;
 
             if(cover_open){
@@ -314,6 +320,14 @@ document.addEventListener('click', function(event) {
             if(crowbar_get == false){
                 crowbar.style.display = 'block';
             }
+            if(line_get == false){
+                cctv_before.style.display = 'block';
+            }
+            if(clear){
+                floor.style.display = 'block';
+            }
+            
+
         }
         else if(x < roomWidth * 0.73 && x > roomWidth * 0.3 && y > roomHeight * 0.75 && y < roomHeight * 0.97){ // 커버 클릭
             if(itemSelectName === 'driver'){
@@ -359,116 +373,71 @@ document.addEventListener('click', function(event) {
             if(crowbar_get == false){
                 crowbar.style.display = 'block';
             }
+            if(line_get == false){
+                cctv_before.style.display = 'block';
+            }
+            if(clear){
+                floor.style.display = 'block';
+            }
         }
-
     }
-    
-    else if(room_number === 4){ // 2사로
+
+    else if(room_number === 4){ // 엘리베이터 버튼
         if(x < roomWidth * 0.2 && y > roomHeight * 0.8){ // 메인룸 돌아가기
-            room.setAttribute('src', 'images/room1.png');
+            room.setAttribute('src', 'images/room2-1.png');
             return_img.style.display = 'none';
-            subroom_in = false;
+            light_1.style.display = 'none';
             room_number = 1;
-        }
-        if(subroom_open){
-            if(subroom_in){
-                if(x > roomWidth * 0.25 && x < roomWidth * 0.75 && y > roomHeight * 0.3 && y < roomHeight * 0.7){ // 백호돌이 클릭
-                    if(itemSelectName == 'glass'){
-                        room.setAttribute('src', 'images/room1-3-3.png');
-                        baekho_get = true;
-                        bottom_img.setAttribute('src', 'images/bottom_success.png');
-                        hint_icon.style.display = 'none';
-                        dark2.style.display = 'none';
-                        return_img.style.display = 'none';
-                        exit.style.display='block';
-                        item_used('glass');
-                        item_reset();
-                    }
+
+            if(cover_open){
+                cover_small.style.display = 'none';
+                if(line_connection){
+                    line_cut_small.style.display = 'none';
+                }
+                else{
+                    line_cut_small.style.display = 'block';
                 }
             }
             else{
-                if(y < roomHeight * 0.7){ // 백호돌이방 들어가기
-                    room.setAttribute('src', 'images/room1-3-2.png');
-                    subroom_in = true;
-                }
+                cover_small.style.display = 'block';
+                line_cut_small.style.display = 'block';
+                
             }
+            if(crowbar_get == false){
+                crowbar.style.display = 'block';
+            }
+            if(line_get == false){
+                cctv_before.style.display = 'block';
+            }
+            if(clear){
+                floor.style.display = 'block';
+            }
+        }
+        else if(x < roomWidth * 0.42 && x > roomWidth * 0.30 && y > roomHeight * 0.63 && y < roomHeight * 0.74){ // 1층 버튼 클릭
+            press_1 = true;
+            light_1.style.display = 'block';
+            return_img.style.display = 'none';
             
-        }
-        else{
-            if(x > roomWidth * 0.17 && x < roomWidth * 0.43 && y > roomHeight * 0.3 && y < roomHeight * 0.61){ // 열쇠로 자물쇠 오픈
-                if(itemSelectName === 'key'){
-                    subroom_open = true;
-                    room.setAttribute('src', 'images/room1-3-1.png');
-    
-                    item_used('key');
-                    item_reset();
-    
-                }
-            }
-        }
-        
-        
-        
 
-    }
-
-    else if(room_number === 5){ // 좌측면(정문)
-        if(x < roomWidth * 0.2 && y > roomHeight * 0.8){ // 메인룸 돌아가기
-            room.setAttribute('src', 'images/room1.png');
-            return_img.style.display = 'none';
-            towel_min.style.display = 'none';
-            switch_Off.style.display = 'none';
-            safe.style.display = 'none';
-            safe_number.style.display = 'none';
-            safe_reset();
-            room_number = 1;
-
-        }
-        if(x > roomWidth * 0.35 && x < roomWidth * 0.53 && y > roomHeight * 0.4 && y < roomHeight * 0.54){ // 수건 클릭
-            if(towel_open == false){
-                towel_min.style.display = 'block';
-                towel_open = true;
-            }
-            else{
-                safe.style.display = 'block';
-                safe_number.style.display = 'block';
-            }
-        }
-        if(x > roomWidth * 0.9 && x < roomWidth * 0.95 && y > roomHeight * 0.55 && y < roomHeight * 0.66){ // 스위치 클릭
-            if(switch_open == true){
-                switch_Off.style.display = 'block';
-                dark2.style.display = 'block';
-                switch_open = false;
-                darkness = true;
-            }
-            else{
-                switch_Off.style.display = 'none';
-                dark2.style.display = 'none';
-                switch_open = true;
-                darkness = false;
-            }
-        }
-        if(x > roomWidth * 0.7 && x < roomWidth * 0.8 && y > roomHeight * 0.06 && y < roomHeight * 0.17){ // 시계 클릭
-            if(glass_get == false){
-                item_get('glass');
-                glass_get = true;
-            }
-            else{
-                //skip
-            }
-   
-        }
-
-
-        if(y < roomHeight * 0.2 || (y < roomHeight * 0.95 && y > roomHeight * 0.8)){  // 금고 창 닫기
-            safe.style.display = 'none';
-            safe_number.style.display = 'none';
-            safe_reset();
+            setTimeout(() => {
+                masking.style.display = 'block';
+                masking.style.animation = "masking_off 3s 1";
+            }, 1000);
+            
+            /*
+            setTimeout(() => {
+                masking.style.animation = "masking_on 1.5s 1";
+                room.setAttribute('src', 'images/ending.gif');
+            }, 1500);
+            setTimeout(() => {
+                masking.style.display = 'none';
+                finish.style.display = 'block';
+                gotomain.style.display='block';
+                finish.style.animation = "masking_off 4s 1";
+                gotomain.style.animation = "masking_off 4s 1"; 
+            }, 8000);*/
         }
     }
-
-
-
 
 });
 
@@ -480,6 +449,23 @@ driver_bg.addEventListener('click', function(event) {
     driver_get = true;
     item_get('driver');
     item_reset();
+});
+// 니퍼 발견
+nipper_bg.addEventListener('click', function(event) {
+    nipper_bg.style.display = 'none';
+    nipper_get = true;
+    item_get('nipper');
+    item_reset();
+});
+// CCTV 클릭 & 니퍼 사용
+cctv_before.addEventListener('click', function(event) {
+    if(itemSelectName === 'nipper'){
+        cctv_before.style.display = 'none';
+        line_get = true;
+        item_get('line');
+        item_used('nipper');
+        item_reset();
+    }
 });
 // 전선 사용
 line_cut.addEventListener('click', function(event) {
@@ -495,6 +481,16 @@ lever_down.addEventListener('click', function(event) {
     if( electrical_connection == true){
         lever_down.style.display = 'none';
         lever_up.style.display = 'block';
+
+        room.style.animation = "jiggle_room 0.2s 5";
+        setTimeout(() => {
+            door_left.style.left = "0";
+            door_left.style.transition = "all 1s 0.4s"; 
+            door_right.style.left = "0";
+            door_right.style.transition = "all 1s 0.4s"; 
+            floor.style.display = 'block';
+            clear = true;
+        }, 1200);
     }
     else{
         lever_down.style.animation = "jiggle_lever 0.3s 1";
@@ -741,6 +737,9 @@ function item_get(itemName){
             }
             else if(itemName=='line'){
                 item[i].setAttribute('src', 'images/line_item.png');
+            }
+            else if(itemName=='nipper'){
+                item[i].setAttribute('src', 'images/nipper_item.png');
             }
             break;
         }
