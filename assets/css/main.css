@@ -4503,7 +4503,7 @@
 	height: 4%;
 	position: absolute;
 	transform: translate(-50%, -50%);
-	top: 29.9%;
+	top: 29.7%;
 	left: 14%;
 }
 #crowbar {
@@ -4788,4 +4788,69 @@
 	top: 24%;
 	left: 62.3%;
 	pointer-events: none;
+}
+#nipper_bg {
+	display: none;
+	z-index: 3;
+	width: 30%; 
+	height: 4%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 53.7%;
+	left: 57%;
+}
+#nipper {
+	display: none;
+	z-index: 3;
+	width: 30%; 
+	height: 14%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 30%;
+	left: 20%;
+}
+#cctv_before {
+	display: block;
+	z-index: 3;
+	width: 10%; 
+	height: 6.5%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 6.4%;
+	left: 86.3%;
+}
+@keyframes jiggle_room{
+    0%{
+    	left:0%;
+    }
+    33%{
+    	left:-0.5%;
+    }
+	66%{
+
+    	left:0.5%;
+    }
+    100%{
+        left:0%    
+    }
+}
+#floor {
+	display: none;
+	z-index: 3;
+	width: 22.3%; 
+	height: 3.2%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 10.25%;
+	left: 50%;
+}
+#light_1 {
+	display: none;
+	z-index: 3;
+	width: 26%; 
+	height: 12.3%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 40.68%;
+	left: 36%;
 }
