@@ -32,6 +32,13 @@ var floor = document.getElementById('floor');
 var light_1 = document.getElementById('light_1');
 var exit = document.getElementById('exit');
 var masking = document.getElementById('masking');
+var krun_intro = document.getElementById('krun_intro');
+var krun_masking = document.getElementById('krun_masking');
+var gameover = document.getElementById('gameover');
+var readygo = document.getElementById('readygo');
+var ending2 = document.getElementById('ending2');
+var finish = document.getElementById('finish');
+var gotomain = document.getElementById('gotomain');
 
 
 //item 관련선언
@@ -72,6 +79,60 @@ var pass3_num=0;
 var pass4_num=0;
 var pass_type_check = 0; // pass_lever 창 오픈되는 동시에 pass2_num 증가하는 문제 해결하기 위한 변수
 
+
+
+//터치패드 게임 애니메이션 관련선언
+var touchpad_container = document.getElementById('touchpad_container');
+var mainRect = touchpad_container.getBoundingClientRect();
+var bg_river = document.getElementById('bg_river');
+var bg_road = document.getElementById('bg_road');
+var current_distance = document.getElementById('distance');
+var running_tiger = document.getElementById('running_tiger');
+var tigerRect = running_tiger.getBoundingClientRect();
+var moving_hurdle1 = document.getElementById('hurdle1'); // 허들
+var moving_hurdle1Rect = moving_hurdle1.getBoundingClientRect();
+var butterfly = document.getElementById('butterfly');
+var donuts = document.getElementById('donuts');
+
+let requestAni;
+let riverCount = 0;
+let riverSpeed = 1; // 강 흐르는 속도
+let roadCount = 0;
+let hurdle1IntervalCount = 0; // 난도 설정을 위해 장애물이 반복된 횟수 체크
+
+let roadSpeed = 3; // 도로 움직이는 속도
+
+let hurdlePositionX;
+let hurdlePositionY;
+let butterflyPositionX;
+let donutsPositionX;
+let donutsPositionY;
+
+
+console.log(mainRect.height);
+
+
+
+
+//백호돌이 세팅
+let myposX = mainRect.width * 0.25; //첫위치 가져오기
+let myposY = mainRect.height * 0.77;
+let groundStandard = myposY; // 땅에 닿았음을 판단하는 기준
+let isJumping = false; // 점프 여부
+let isDoubleJumping = false; // 더블점프 여부
+let jumpVelocityY = -8; //점프 시 한번에 이동하는 픽셀 크기(점프 속도 결정)
+let jumpingGravity = 0.4; // 점프 중력
+let start_waiting = false; // readygo 중 클릭방지
+
+// 거리 세팅
+let highDistance = 0;
+let distanceStandard = 0;
+let currentDistance = 0.0;
+let gameDifficulty = 1;
+let krun_playing = false;
+
+
+
 //기타 변수
 var room_number = 1;
 var driver_get = false;
@@ -81,7 +142,7 @@ var crowbar_get = false;
 var door_open = false;
 var line_get = false;
 var puzzle_clear = false;
-var electrical_connection = true;   // --------------------------------------------------------------------------------------------테스트 할땐 true 평소엔 false
+var electrical_connection = false;
 var pass_lever_open = false;
 var password_matching = false;
 var nipper_get = false;
@@ -221,6 +282,9 @@ document.addEventListener('click', function(event) {
                 cover_large.style.display = 'none';
                 if(line_connection){
                     line_cut.style.display = 'none';
+                    touchpad_container.style.display = 'block';
+                    krun_intro.style.display = 'block';
+                    reset();
                 }
                 else{
                     line_cut.style.display = 'block';
@@ -307,6 +371,12 @@ document.addEventListener('click', function(event) {
                 cover_small.style.display = 'none';
                 if(line_connection){
                     line_cut_small.style.display = 'none';
+                    touchpad_container.style.display = 'none';
+                    krun_intro.style.display = 'none';
+                    krun_masking.style.display = 'none';
+                    gameover.style.display = 'none';
+                    readygo.style.display = 'none';
+                    reset();
                 }
                 else{
                     line_cut_small.style.display = 'block';
@@ -326,6 +396,7 @@ document.addEventListener('click', function(event) {
             if(clear){
                 floor.style.display = 'block';
             }
+            
             
 
         }
@@ -417,25 +488,26 @@ document.addEventListener('click', function(event) {
             press_1 = true;
             light_1.style.display = 'block';
             return_img.style.display = 'none';
-            
+            bottom_img.setAttribute('src', 'images/bottom_success2.png');
 
             setTimeout(() => {
                 masking.style.display = 'block';
-                masking.style.animation = "masking_off 3s 1";
+                masking.style.animation = "masking_off 2s 1";
             }, 1000);
-            
-            /*
             setTimeout(() => {
-                masking.style.animation = "masking_on 1.5s 1";
-                room.setAttribute('src', 'images/ending.gif');
-            }, 1500);
+                //masking.style.animation = "masking_on 1.5s 1";
+                masking.style.display = 'none';
+                light_1.style.display = 'none';
+                room.setAttribute('src', 'images/ending2.gif');
+            }, 3000);
+
             setTimeout(() => {
                 masking.style.display = 'none';
                 finish.style.display = 'block';
                 gotomain.style.display='block';
                 finish.style.animation = "masking_off 4s 1";
                 gotomain.style.animation = "masking_off 4s 1"; 
-            }, 8000);*/
+            }, 20000);
         }
     }
 
@@ -474,6 +546,9 @@ line_cut.addEventListener('click', function(event) {
         line_cut.style.display = 'none';
         item_used('line');
         item_reset();
+        touchpad_container.style.display = 'block';
+        krun_intro.style.display = 'block';
+        reset();
     }
 });
 // 메인레버 클릭
@@ -514,6 +589,22 @@ close.addEventListener('click', function(event) {
     pass[0].style.display = 'none'; pass[1].style.display = 'none'; pass[2].style.display = 'none'; pass[3].style.display = 'none';
     spark.style.display = 'none';
     pass_type_check = 0;
+});
+// 힌트 보기
+hint_icon.addEventListener('click', function(event) {
+    if(electrical_connection){
+        bottom_img.setAttribute('src', 'images/hint_6.png');
+    }
+    else if(driver_get){
+        bottom_img.setAttribute('src', 'images/hint_5.png');
+    }
+    else{
+        bottom_img.setAttribute('src', 'images/hint_4.png');
+    }
+});
+gotomain.addEventListener('click', function(event) {
+    gotomain.style.display = 'none';
+    location.replace('https://gubaeki.github.io/Project_04/index2.html');
 });
 
 
@@ -657,7 +748,198 @@ function matching_check(){
   console.log(matching_count);
 }
 
+//---------------------------------------- 터치패드 게임 ----------------------------------------------
+//애니메이션
+function gameStart() {
 
+    // 배경 움직이기
+    bg_river.style.left = `-${riverCount}px`;
+    bg_road.style.left = `-${roadCount}px`;
+    if(riverCount >= bg_river.offsetWidth/2 - riverSpeed){
+        riverCount = riverCount - (bg_river.offsetWidth/2 - riverSpeed);
+    }else{
+        riverCount += riverSpeed;
+    }
+    if(roadCount >= bg_road.offsetWidth/2 - roadSpeed){
+        roadCount = roadCount - (bg_road.offsetWidth/2 - roadSpeed);
+    }else{
+        roadCount += roadSpeed;
+    }
+
+    // 장애물 움직이기 & 충돌 감지
+    if(gameDifficulty === 1){
+        moving_hurdle1.style.left = `${hurdlePositionX}px`;
+        if(hurdlePositionX <= 0 - (moving_hurdle1.width/2)){
+            hurdle1IntervalCount += 1 ;
+            hurdlePositionX = mainRect.width + (moving_hurdle1.width)/2;
+        }else{
+            hurdlePositionX -= roadSpeed;
+        }
+        if(isCollisionCheck(hurdlePositionX, hurdlePositionY, myposX, myposY)){return};
+    }
+    else if(gameDifficulty === 2){
+        donuts.style.left = `${donutsPositionX}px`;
+        if(donutsPositionX <= 0 - (donuts.width/2)){
+            hurdle1IntervalCount += 1 ;
+            donutsPositionX = mainRect.width + (donuts.width)/2;
+        }else{
+            donutsPositionX -= roadSpeed;
+        }
+        if(isCollisionCheck_donuts(donutsPositionX, donutsPositionY, myposX, myposY)){return};
+    }
+
+    // 점프 & 더블점프
+    if(isJumping){
+        jumpVelocityY += jumpingGravity;
+        myposY += jumpVelocityY;
+        if(myposY > groundStandard){ //착지하면 초기화
+            myposY -= jumpVelocityY;
+            isJumping = false;
+            isDoubleJumping = false;
+            jumpVelocityY = -8;
+        }
+        running_tiger.style.top = `${myposY}px`;
+    }
+    // 이동거리 증가
+    distanceStandard += roadSpeed/2;
+    currentDistance = Math.round((distanceStandard/100)*10)/10;
+    current_distance.textContent = `${currentDistance} m`;
+
+    // 거리별 난도 설정
+    if(2 <= hurdle1IntervalCount && 6 > hurdle1IntervalCount){
+        butterfly.style.left = `${butterflyPositionX}px`;
+        butterflyPositionX -= 1;
+    }else if(6 <= hurdle1IntervalCount){
+        gameDifficulty = 2;
+    }
+
+    requestAni = requestAnimationFrame(gameStart);
+}
+
+//점프관련 함수
+function startJumpMoving() {
+    if(isJumping){
+        if(!isDoubleJumping){
+            isDoubleJumping = true;
+            jumpVelocityY = -8;
+            jumpVelocityY += jumpingGravity;
+            myposY += jumpVelocityY;
+        }
+    }else{
+        isJumping = true;
+        isDoubleJumping = false;
+    }
+}
+
+// 충돌감지 함수
+function isCollisionCheck(hurdlePositionX, hurdlePositionY, myposX, myposY) {
+    let diffX = Math.abs(hurdlePositionX - myposX);
+    if (diffX <= tigerRect.width/3) {
+      let diffY = Math.abs(hurdlePositionY - myposY);
+      if (diffY <= tigerRect.height/2) {
+        //초기화
+        krun_masking.style.display = 'block';
+        gameover.style.display = 'block';
+        krun_playing = false;
+        readygo.setAttribute('src', '');
+        readygo.setAttribute('src', '../../images/readygo.gif');
+        
+        return true;
+      }
+    }
+    return false;
+  }
+function isCollisionCheck_donuts(hurdlePositionX, hurdlePositionY, myposX, myposY) { //도넛용 충돌체크 함수
+    let diffX = Math.abs(hurdlePositionX - myposX);
+    if (diffX <= tigerRect.width/1) {
+      let diffY = Math.abs(hurdlePositionY - myposY);
+      if (diffY <= tigerRect.height/1.25) {
+        //초기화
+        krun_masking.style.display = 'block';
+        gameover.style.display = 'block';
+        krun_playing = false;
+        readygo.setAttribute('src', '');
+        readygo.setAttribute('src', '../../images/readygo.gif');
+        
+        return true;
+      }
+    }
+    return false;
+  }
+
+// krun intro 클릭
+krun_intro.addEventListener('click', function(event) {
+    krun_intro.style.display = 'none';
+    event.stopPropagation();
+    krun_playing = true;
+    start_waiting = true;
+    readygo.style.display = 'block';
+    setTimeout(() => {
+        readygo.style.display = 'none';
+        start_waiting = false;
+        gameStart();
+    }, 1300);
+    console.log('intro 클릭');
+});
+
+// touchpad_container 클릭
+touchpad_container.addEventListener('click', function(event) {
+    if(krun_playing){
+        if(start_waiting){
+            //skip
+        }
+        else{
+            startJumpMoving();
+        }
+    }
+    else{
+        krun_masking.style.display = 'none';
+        gameover.style.display = 'none';
+        krun_intro.style.display = 'block';
+        reset();
+    }
+});
+// reset 함수
+function reset() {
+    cancelAnimationFrame(requestAni);
+    mainRect = touchpad_container.getBoundingClientRect();
+    tigerRect = running_tiger.getBoundingClientRect();
+    myposX = mainRect.width * 0.25;
+    myposY = mainRect.height * 0.77;
+    hurdlePositionX = mainRect.width + (moving_hurdle1.width)/2;
+    hurdlePositionY = mainRect.height - (mainRect.height*0.05) - (moving_hurdle1.height)/2;
+    butterflyPositionX = mainRect.width + (butterfly.width)/2;
+    donutsPositionX = mainRect.width + (donuts.width)/2;
+    donutsPositionY = mainRect.height - (mainRect.height*0.05) - (donuts.height)/2;
+
+    krun_playing = false;
+    currentDistance = 0.0;
+    current_distance.textContent = `${currentDistance} m`;
+    gameDifficulty = 1;
+    groundStandard = myposY;
+    isJumping = false;
+    isDoubleJumping = false;
+    jumpVelocityY = -8;
+    moving_hurdle1.style.display = 'block';
+    roadSpeed = 3; // 도로 움직이는 속도
+    riverSpeed = 1;
+    riverCount = 0;
+    roadCount = 0;
+    distanceStandard = 0;
+    hurdle1IntervalCount = 0; // 난도 설정을 위해 장애물이 반복된 횟수 체크
+    start_waiting = false;
+
+    moving_hurdle1.style.left = hurdlePositionX + 'px';
+    moving_hurdle1.style.top = hurdlePositionY + 'px';
+    running_tiger.style.left = `${myposX}px`
+    running_tiger.style.top = `${myposY}px`
+    bg_river.style.left = `-${riverCount}px`;
+    bg_road.style.left = `-${roadCount}px`;
+    moving_hurdle1.style.left = `${hurdlePositionX}px`;
+    butterfly.style.left = `${butterflyPositionX}px`;
+    donuts.style.left = `${donutsPositionX}px`;
+
+}
 
 
 //---------------------------------------- 아이템 컨테이너 ----------------------------------------------
@@ -847,16 +1129,3 @@ gotomain.addEventListener('click', function(event) {
 
 });
 */
-
-hint_icon.addEventListener('click', function(event) {
-    if(subroom_open){
-        bottom_img.setAttribute('src', 'images/hint_3.png');
-    }
-    else if(memo_blue_get){
-        bottom_img.setAttribute('src', 'images/hint_2.png');
-    }
-    else{
-        bottom_img.setAttribute('src', 'images/hint_1.png');
-    }
-});
-
