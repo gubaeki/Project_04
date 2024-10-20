@@ -7,6 +7,9 @@ var bottom_img = document.getElementById('bottom_img');
 var return_img = document.getElementById('return_img');
 var loading = document.getElementById('loading');
 var hint_icon = document.getElementById('hint_icon');
+var puzzle_skip_icon = document.getElementById('puzzle_skip_icon');
+var password_skip_icon = document.getElementById('password_skip_icon');
+var password_icon = document.getElementById('password_icon');
 var driver_bg = document.getElementById('driver_bg');
 var driver_item = document.getElementById('driver_item');
 var cover_large = document.getElementById('cover_large');
@@ -487,6 +490,10 @@ document.addEventListener('click', function(event) {
             light_1.style.display = 'block';
             return_img.style.display = 'none';
             bottom_img.setAttribute('src', 'images/bottom_success2.png');
+            hint_icon.style.display = 'none';
+            puzzle_skip_icon.style.display = 'none';
+            password_skip_icon.style.display = 'none';
+            password_icon.style.display = 'none';
 
             setTimeout(() => {
                 masking.style.display = 'block';
@@ -592,13 +599,37 @@ close.addEventListener('click', function(event) {
 hint_icon.addEventListener('click', function(event) {
     if(electrical_connection){
         bottom_img.setAttribute('src', 'images/hint_6.png');
+        puzzle_skip_icon.style.display = 'none';
+        password_skip_icon.style.display = 'none';
+        password_icon.style.display = 'none';
     }
     else if(driver_get){
         bottom_img.setAttribute('src', 'images/hint_5.png');
+        puzzle_skip_icon.style.display = 'block';
     }
     else{
         bottom_img.setAttribute('src', 'images/hint_4.png');
     }
+});
+puzzle_skip_icon.addEventListener('click', function(event) {
+    puzzle_skip_icon.style.display = 'none';
+    password_skip_icon.style.display = 'block';
+    cable[0].style.display = 'none';
+    cable[1].style.display = 'none';
+    cable[3].style.display = 'none';
+    cable[4].style.display = 'none';
+    cable[5].style.display = 'none';
+    cable[6].style.display = 'none';
+    cable[7].style.display = 'none';
+    cable[8].style.display = 'none';
+    room21_inner_bg.style.display = 'none';
+    puzzle_clear = true;
+    pass_lever_light.style.display = 'block';
+
+});
+password_skip_icon.addEventListener('click', function(event) {
+    password_skip_icon.style.display = 'none';
+    password_icon.style.display = 'block';
 });
 gotomain.addEventListener('click', function(event) {
     gotomain.style.display = 'none';
