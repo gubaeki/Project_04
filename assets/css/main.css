@@ -4417,6 +4417,16 @@
 	top: 52%;
 	left: 50%;
 }
+#gotonext {
+	display: none;
+	z-index: 3001;
+	width: 50%; 
+	height: 21%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 52%;
+	left: 50%;
+}
 #exit {
 	display: none;
 	z-index: 1005;
@@ -4853,4 +4863,168 @@
 	transform: translate(-50%, -50%);
 	top: 40.68%;
 	left: 36%;
+}
+#touchpad_container{
+	display: none;
+	z-index: 3;
+	background-color: yellow;
+	width: 60%; 
+	height: 37%;
+	border-radius: 3%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 22.4%;
+	left: 49%;
+	overflow:hidden;
+	
+}
+#krun_intro{
+	display: block;
+	z-index: 10;
+	background-color: yellow;
+	width: 100%; 
+	height: 100%;
+	border-radius: 3%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+}
+#bg_river {
+	z-index: 4;
+	width: 200%; /* Background image width should be greater than 100% */
+	top : 0%;
+	height: 100%;
+	border-radius: 3%;
+	background-size: cover;
+	position: absolute;
+
+}
+#bg_road {
+	display: block;
+	z-index: 7;
+	width: 200%; /* Background image width should be greater than 100% */
+	top : 64%;
+	height: 36%;
+	border-radius: 3%;
+	background-size: cover;
+	position: absolute;
+}
+#running_tiger{
+	position: absolute;
+	z-index: 8;
+	width: 30.69%;
+	height: 23%;
+	top : 77%;
+	left : 25%;
+	transform: translate(-50%, -50%);
+	/*부드럽게 이동*/
+	/*transition: top 1.0s ease-in, left 1.0s ease-in;*/
+}
+#distance {
+	position: absolute;
+	z-index: 6;
+	color: black;
+	font-size: 6.5vw;
+	font-weight: 900;
+	width: 45%;
+	height: 14%;
+	transform: translate(-50%, -50%);
+	top: 15%;
+	left: 50%;
+	border-color: #000;
+	border: solid;
+	border-radius: 5%;
+	background-color: white;
+	opacity: 85%;
+}
+#hurdle1{
+	display: block;
+	position: absolute;
+	z-index: 7;
+	width: 30.69%;
+	height: 23%;
+	top : 77%;
+	left : 25%;
+	transform: translate(-50%, -50%);
+}
+#highlight-running-zone{
+	display: block;
+	position: absolute;
+	z-index: 8;
+	width: 30.69%;
+	height: 23%;
+	top : 77%;
+	left : 25%;
+	background-color: pink;
+	opacity: 70%;
+	transform: translate(-50%, -50%);
+}
+#highlight-hurdle-zone{
+	display: block;
+	position: absolute;
+	z-index: 8;
+	width: 30.69%;
+	height: 23%;
+	top : 77%;
+	left : 150%;
+	background-color: green;
+	opacity: 70%;
+	transform: translate(-50%, -50%);
+}
+#krun_masking {
+	display: none;
+	z-index: 15;
+	width: 100%;
+	height: 100%;
+	border-radius: 3%;
+	transform: translate(-50%, -50%);
+	position: absolute;
+	background-color: #000;
+	top: 50%;
+	left: 50%;
+	opacity: 60%;
+}
+#gameover {
+	display: none;
+	z-index: 15;
+	width: 70%;
+	height: 20%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+	opacity: 100%;
+}
+#readygo {
+	display: none;
+	z-index: 16;
+	width: 70%;
+	height: 50%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+	opacity: 100%;
+}
+#butterfly {
+	display: block;
+	z-index: 7;
+	width: 35%;
+	height: 25%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 40%;
+	left: 150%;
+	opacity: 100%;
+}
+#donuts {
+	display: block;
+	position: absolute;
+	z-index: 7;
+	width: 60%;
+	height: 33%;
+	top : 85%;
+	left : 70%;
+	transform: translate(-50%, -50%);
 }
