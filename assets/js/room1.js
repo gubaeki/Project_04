@@ -19,7 +19,7 @@ var safe = document.getElementById('safe');
 var safe_number = document.getElementById('safe_number');
 var key = document.getElementById('key');
 var glass = document.getElementById('glass');
-var gotomain = document.getElementById('gotomain');
+var gotonext = document.getElementById('gotonext');
 var loading = document.getElementById('loading');
 var exit = document.getElementById('exit');
 var ending = document.getElementById('ending');
@@ -93,7 +93,7 @@ let images = [
     "../../images/safe_open.png",
     "../../images/key.png",
     "../../images/glass.png",
-    "../../images/gotomain.png",
+    "../../images/gotonext.png",
     "../../images/exit.png",
     "../../images/ending.gif",
     "../../images/tobecontinued.png"];
@@ -634,17 +634,17 @@ exit.addEventListener('click', function(event) {
     setTimeout(() => {
         masking.style.display = 'none';
         finish.style.display = 'block';
-        gotomain.style.display='block';
+        gotonext.style.display='block';
         finish.style.animation = "masking_off 4s 1";
-        gotomain.style.animation = "masking_off 4s 1"; 
+        gotonext.style.animation = "masking_off 4s 1"; 
     }, 8000);
     
     
 });
 
-gotomain.addEventListener('click', function(event) {
-    gotomain.style.display = 'none';
-    location.replace('https://gubaeki.github.io/Project_04');
+gotonext.addEventListener('click', function(event) {
+    gotonext.style.display = 'none';
+    location.replace('https://gubaeki.github.io/Project_04/index2.html');
 
 });
 
