@@ -35,7 +35,6 @@ var masking = document.getElementById('masking');
 var krun_intro = document.getElementById('krun_intro');
 var krun_masking = document.getElementById('krun_masking');
 var gameover = document.getElementById('gameover');
-var readygo = document.getElementById('readygo');
 var ending2 = document.getElementById('ending2');
 var finish = document.getElementById('finish');
 var gotomain = document.getElementById('gotomain');
@@ -375,7 +374,6 @@ document.addEventListener('click', function(event) {
                     krun_intro.style.display = 'none';
                     krun_masking.style.display = 'none';
                     gameover.style.display = 'none';
-                    readygo.style.display = 'none';
                     reset();
                 }
                 else{
@@ -841,8 +839,6 @@ function isCollisionCheck(hurdlePositionX, hurdlePositionY, myposX, myposY) {
         krun_masking.style.display = 'block';
         gameover.style.display = 'block';
         krun_playing = false;
-        readygo.setAttribute('src', '');
-        //readygo.setAttribute('src', '../../images/readygo.gif');
         
         return true;
       }
@@ -858,8 +854,6 @@ function isCollisionCheck_donuts(hurdlePositionX, hurdlePositionY, myposX, mypos
         krun_masking.style.display = 'block';
         gameover.style.display = 'block';
         krun_playing = false;
-        readygo.setAttribute('src', '');
-        //readygo.setAttribute('src', '../../images/readygo.gif');
         
         return true;
       }
@@ -873,13 +867,10 @@ krun_intro.addEventListener('click', function(event) {
     event.stopPropagation();
     krun_playing = true;
     start_waiting = true;
-    readygo.setAttribute('src', '../../images/readygo.gif');
-    readygo.style.display = 'block';
     setTimeout(() => {
-        readygo.style.display = 'none';
         start_waiting = false;
         gameStart();
-    }, 1300);
+    }, 1000);
     console.log('intro 클릭');
 });
 
