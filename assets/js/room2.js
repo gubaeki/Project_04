@@ -842,7 +842,7 @@ function isCollisionCheck(hurdlePositionX, hurdlePositionY, myposX, myposY) {
         gameover.style.display = 'block';
         krun_playing = false;
         readygo.setAttribute('src', '');
-        readygo.setAttribute('src', '../../images/readygo.gif');
+        //readygo.setAttribute('src', '../../images/readygo.gif');
         
         return true;
       }
@@ -859,7 +859,7 @@ function isCollisionCheck_donuts(hurdlePositionX, hurdlePositionY, myposX, mypos
         gameover.style.display = 'block';
         krun_playing = false;
         readygo.setAttribute('src', '');
-        readygo.setAttribute('src', '../../images/readygo.gif');
+        //readygo.setAttribute('src', '../../images/readygo.gif');
         
         return true;
       }
@@ -873,6 +873,7 @@ krun_intro.addEventListener('click', function(event) {
     event.stopPropagation();
     krun_playing = true;
     start_waiting = true;
+    readygo.setAttribute('src', '../../images/readygo.gif');
     readygo.style.display = 'block';
     setTimeout(() => {
         readygo.style.display = 'none';
@@ -938,7 +939,6 @@ function reset() {
     moving_hurdle1.style.left = `${hurdlePositionX}px`;
     butterfly.style.left = `${butterflyPositionX}px`;
     donuts.style.left = `${donutsPositionX}px`;
-
 }
 
 
@@ -1054,78 +1054,3 @@ function item_reset(){
     item[3].style.backgroundColor="transparent";
     item[4].style.backgroundColor="transparent";
 }
-
-
-
-// 금고 비밀번호 입력
-/*
-safe.addEventListener('click', function(event) {
-    var x = event.pageX;
-    var y = event.pageY;
-
-    if(safe_open == false){
-        if(x > roomWidth * 0.675 && x < roomWidth * 0.745 && y > roomHeight * 0.585 && y < roomHeight * 0.635){ // 0
-            safe_check('0');
-        }
-        else if(x > roomWidth * 0.585 && x < roomWidth * 0.655 && y > roomHeight * 0.515 && y < roomHeight * 0.565){ // 1
-            safe_check('1');
-        }
-        else if(x > roomWidth * 0.675 && x < roomWidth * 0.745 && y > roomHeight * 0.515 && y < roomHeight * 0.565){ // 2
-            safe_check('2');
-        }
-        else if(x > roomWidth * 0.765 && x < roomWidth * 0.835 && y > roomHeight * 0.515 && y < roomHeight * 0.565){ // 3
-            safe_check('3');
-        }
-        else if(x > roomWidth * 0.585 && x < roomWidth * 0.655 && y > roomHeight * 0.445 && y < roomHeight * 0.495){ // 4
-            safe_check('4');
-        }
-        else if(x > roomWidth * 0.675 && x < roomWidth * 0.745 && y > roomHeight * 0.445 && y < roomHeight * 0.495){ // 5
-            safe_check('5');
-        }
-        else if(x > roomWidth * 0.765 && x < roomWidth * 0.835 && y > roomHeight * 0.445 && y < roomHeight * 0.495){ // 6
-            safe_check('6');
-        }
-        else if(x > roomWidth * 0.585 && x < roomWidth * 0.655 && y > roomHeight * 0.385 && y < roomHeight * 0.425){ // 7
-            safe_check('7');
-        }
-        else if(x > roomWidth * 0.675 && x < roomWidth * 0.745 && y > roomHeight * 0.385 && y < roomHeight * 0.425){ // 8
-            safe_check('8');
-        }
-        else if(x > roomWidth * 0.765 && x < roomWidth * 0.835 && y > roomHeight * 0.385 && y < roomHeight * 0.425){ // 9
-            safe_check('9');
-        }
-        else if(x > roomWidth * 0.765 && x < roomWidth * 0.835 && y > roomHeight * 0.585 && y < roomHeight * 0.635){ // Del
-            safe_reset();
-        }
-    }
-    
-    event.preventDefault();
-    
-});
-*/
-/*
-exit.addEventListener('click', function(event) {
-    exit.style.display = 'none';
-    masking.style.display = 'block';
-    masking.style.animation = "masking_off 1.5s 1";
-    setTimeout(() => {
-        masking.style.animation = "masking_on 1.5s 1";
-        room.setAttribute('src', 'images/ending.gif');
-    }, 1500);
-    setTimeout(() => {
-        masking.style.display = 'none';
-        finish.style.display = 'block';
-        gotomain.style.display='block';
-        finish.style.animation = "masking_off 4s 1";
-        gotomain.style.animation = "masking_off 4s 1"; 
-    }, 8000);
-    
-    
-});
-
-gotomain.addEventListener('click', function(event) {
-    gotomain.style.display = 'none';
-    location.replace('https://gubaeki.github.io/Project_04');
-
-});
-*/
