@@ -4451,10 +4451,10 @@
 	display: block;
 	z-index: 5;
 	width: 28%;
-	height: 25%;
+	height: 28%;
 	position: absolute;
 	transform: translate(-50%, -50%);
-	top: 76%;
+	top: 74%;
 	left: 83%;
 }
 
@@ -5027,4 +5027,34 @@
 	top : 85%;
 	left : 70%;
 	transform: translate(-50%, -50%);
+}
+#puzzle_skip_icon {
+	display: none;
+	z-index: 5;
+	width: 28%;
+	height: 16%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 78%;
+	left: 17%;
+}
+#password_skip_icon {
+	display: none;
+	z-index: 5;
+	width: 28%;
+	height: 16%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 78%;
+	left: 17%;
+}
+#password_icon {
+	display: none;
+	z-index: 5;
+	width: 28%;
+	height: 16%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 78%;
+	left: 17%;
 }
