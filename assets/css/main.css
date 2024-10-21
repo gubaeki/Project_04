@@ -4594,6 +4594,7 @@
 	transform: translate(-50%, -50%);
 	top: 41.33%;
 	left: 51.85%;
+	touch-action: none;
 }
 #cable2 {
 	z-index: 0.5;
@@ -4603,6 +4604,7 @@
 	transform: translate(-50%, -50%);
 	top: 41.33%;
 	left: 39.5%;
+	touch-action: none;
 }
 
 #cable3 {
@@ -4613,6 +4615,7 @@
 	transform: translate(-50%, -50%);
 	top: 35.8%;
 	left: 64.2%;
+	touch-action: none;
 }
 #cable4 {
 	z-index: 0.5;
@@ -4622,6 +4625,7 @@
 	transform: translate(-50%, -50%);
 	top: 46.86%;
 	left: 39.5%;
+	touch-action: none;
 }
 #cable5 {
 	z-index: 0.5;
@@ -4631,6 +4635,7 @@
 	transform: translate(-50%, -50%);
 	top: 46.86%;
 	left: 51.85%;
+	touch-action: none;
 }
 #cable6 {
 	z-index: 0.5;
@@ -4640,6 +4645,7 @@
 	transform: translate(-50%, -50%);
 	top: 35.8%;
 	left: 51.85%;
+	touch-action: none;
 }
 #cable7 {
 	z-index: 0.5;
@@ -4649,6 +4655,7 @@
 	transform: translate(-50%, -50%);
 	top: 46.86%;
 	left: 64.2%;
+	touch-action: none;
 }
 #cable8 {
 	z-index: 0.5;
@@ -4658,6 +4665,7 @@
 	transform: translate(-50%, -50%);
 	top: 35.8%;
 	left: 39.5%;
+	touch-action: none;
 }
 #cable9 {
 	z-index: 0.5;
@@ -4667,6 +4675,7 @@
 	transform: translate(-50%, -50%);
 	top: 41.33%;
 	left: 64.2%;
+	touch-action: none;
 }
 @keyframes jiggle_lever{
     0%{
