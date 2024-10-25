@@ -26,6 +26,8 @@ var ending = document.getElementById('ending');
 var masking = document.getElementById('masking');
 var finish = document.getElementById('finish');
 var hint_icon = document.getElementById('hint_icon');
+var password_skip_icon = document.getElementById('password_skip_icon');
+var password_icon2 = document.getElementById('password_icon2');
 
 
 //item 관련선언
@@ -196,7 +198,7 @@ document.addEventListener('click', function(event) {
             room_number = 4;
         }
 
-        if(x < roomWidth * 0.2 && y > roomHeight * 0.3 && y < roomHeight * 0.8){ // 좌측면(정문) 클릭
+        if(x < roomWidth * 0.25 && y > roomHeight * 0.1 && y < roomHeight * 0.9){ // 좌측면(정문) 클릭
             console.log("정문");
             room.setAttribute('src', 'images/room1-4.png');
             return_img.style.display = 'block';
@@ -282,6 +284,8 @@ document.addEventListener('click', function(event) {
                         baekho_get = true;
                         bottom_img.setAttribute('src', 'images/bottom_success.png');
                         hint_icon.style.display = 'none';
+                        password_skip_icon.style.display = 'none';
+                        password_icon2.style.display = 'none';
                         dark2.style.display = 'none';
                         return_img.style.display = 'none';
                         exit.style.display='block';
@@ -651,12 +655,19 @@ gotonext.addEventListener('click', function(event) {
 hint_icon.addEventListener('click', function(event) {
     if(subroom_open){
         bottom_img.setAttribute('src', 'images/hint_3.png');
+        password_skip_icon.style.display = 'none';
+        password_icon2.style.display = 'none';
     }
     else if(memo_blue_get){
         bottom_img.setAttribute('src', 'images/hint_2.png');
+        password_skip_icon.style.display = 'block';
     }
     else{
         bottom_img.setAttribute('src', 'images/hint_1.png');
     }
+});
+password_skip_icon.addEventListener('click', function(event) {
+    password_skip_icon.style.display = 'none';
+    password_icon2.style.display = 'block';
 });
 
