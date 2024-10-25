@@ -47,11 +47,11 @@ document.addEventListener('click', function(event) {
 
     if(x > roomWidth * 0.2 && x < roomWidth * 0.8 && y < roomHeight * 0.45 && y > roomHeight * 0.08){ // 터치패드 클릭
         console.log('방1');
-        location.href='room_first.html'
+        location.href='index.html'
     }
     else if(x > roomWidth * 0.2 && x < roomWidth * 0.8 && y < roomHeight * 0.95 && y > roomHeight * 0.55){ // 터치패드 클릭
         console.log('방2');
-        location.href='room_second.html'
+        location.href='index2.html'
     }
     
 });
