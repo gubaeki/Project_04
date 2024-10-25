@@ -5067,3 +5067,13 @@
 	top: 78%;
 	left: 17%;
 }
+#password_icon2 {
+	display: none;
+	z-index: 5;
+	width: 28%;
+	height: 16%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 78%;
+	left: 17%;
+}
