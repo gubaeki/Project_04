@@ -399,7 +399,7 @@ document.addEventListener('click', function(event) {
     }
 
     else if(room_number === 4){ // 스마트폰
-        if(x < roomWidth * 0.2 && y > roomHeight * 0.8){ // 게이트 돌아가기
+        if(x < roomWidth * 0.2 && y > roomHeight * 0.8 && moving === false){ // 게이트 돌아가기
             room_number = 3;
             room.setAttribute('src', 'images/room3-3.png');
             return_img.style.display = 'block';
@@ -801,12 +801,13 @@ function river_check(){
         if(sheep_position === 'left'){
             console.log('fail');
             fail_app.style.display = 'block';
-
+            moving = true;
             setTimeout(() => {
                 fail_app.style.display = 'none';
                 app5.style.display = 'none';
                 app4.style.display = 'block';
                 app_number = 4;
+                moving = false;
                 river_reset();
             }, 1500);
             
@@ -816,12 +817,13 @@ function river_check(){
         if(sheep_position === 'right'){
             console.log('fail');
             fail_app.style.display = 'block';
-
+            moving = true;
             setTimeout(() => {
                 fail_app.style.display = 'none';
                 app5.style.display = 'none';
                 app4.style.display = 'block';
                 app_number = 4;
+                moving = false;
                 river_reset();
             }, 1500);
         }
