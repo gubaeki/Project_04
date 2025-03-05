@@ -5077,3 +5077,344 @@
 	top: 78%;
 	left: 17%;
 }
+
+
+/****************************Room3**************************/
+#door3-1 {
+	z-index: 10;
+	width: 27%;
+	height: 36%;
+	position: absolute;
+	top: 15%;
+	left: 74%;
+	/*pointer-events: none;*/
+}
+#door3-2 {
+	z-index: 10;
+	display: none;
+	width: 13.7%;
+	height: 31%;
+	position: absolute;
+	top: 16.5%;
+	left: 8%;
+	/*pointer-events: none;*/
+}
+#key {
+	display: none;
+	z-index: 3;
+	width: 5%; 
+	height: 2%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 40%;
+	left: 22%;
+}
+#key_item {
+	display: none;
+	z-index: 3;
+	width: 30%; 
+	height: 14%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 30%;
+	left: 20%;
+}
+#fireextinguisher_bg {
+	display: none;
+	z-index: 3;
+	width: 10%; 
+	height: 6%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 35.8%;
+	left: 29.5%;
+}
+#fireextinguisher_item {
+	display: none;
+	z-index: 3;
+	width: 30%; 
+	height: 14%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 30%;
+	left: 20%;
+}
+#fire {
+	display: none;
+	z-index: 3;
+	width: 13%; 
+	height: 25%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 33%;
+	left: 15%;
+}
+#water {
+	display: none;
+	z-index: 3;
+	width: 35%; 
+	height: 17%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 49%;
+	left: 33%;
+}
+#light_water {
+	display: none;
+	z-index: 3;
+	width: 75%; 
+	height: 9%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 55%;
+	left: 49%;
+}
+#smoke {
+	display: none;
+	z-index: 3;
+	width: 30%; 
+	height: 15%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 20%;
+	left: 33%;
+}
+#paint_info {
+	display: none;
+	z-index: 3;
+	width: 83.9%; 
+	height: 26.5%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 14.6%;
+	left: 48.8%;
+}
+#smartphone {
+	display: block;
+	z-index: 3;
+	width: 11%; 
+	height: 2.5%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 47.5%;
+	left: 88%;
+}
+#smartphone_item {
+	display: none;
+	z-index: 3;
+	width: 30%; 
+	height: 14%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 30%;
+	left: 20%;
+}
+#cleaning_item {
+	display: none;
+	z-index: 3;
+	width: 30%; 
+	height: 14%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 30%;
+	left: 20%;
+}
+#press_up {
+	display: none;
+	z-index: 3;
+	width: 48%; 
+	height: 35.5%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 29.7%;
+	left: 49.6%;
+}
+#press_down {
+	display: none;
+	z-index: 3;
+	width: 48%; 
+	height: 35.5%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 29.7%;
+	left: 49.6%;
+}
+#press_both {
+	display: none;
+	z-index: 3;
+	width: 48%; 
+	height: 35.5%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 29.7%;
+	left: 49.6%;
+}
+#app1 {
+	display: none;
+	z-index: 3;
+	width: 74.8%; 
+	height: 53%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 30%;
+	left: 50.33%;
+}
+#app2 {
+	display: none;
+	z-index: 3;
+	width: 74.8%; 
+	height: 53%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 30%;
+	left: 50.33%;
+}
+#app3 {
+	display: none;
+	z-index: 3;
+	width: 74.8%; 
+	height: 53%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 30%;
+	left: 50.33%;
+}
+#app4 {
+	display: none;
+	z-index: 3;
+	width: 74.8%; 
+	height: 53%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 30%;
+	left: 50.33%;
+}
+#app5 {
+	display: none;
+	z-index: 3;
+	width: 74.8%; 
+	height: 53%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 30%;
+	left: 50.33%;
+}
+#pass3-1 {
+	display: none;
+	z-index: 3;
+	width: 4%; 
+	height: 1.7%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 12.5%;
+	left: 57.5%;
+}
+#pass3-2 {
+	display: none;
+	z-index: 3;
+	width: 4%; 
+	height: 1.7%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 12.5%;
+	left: 53.5%;
+}
+#pass3-3 {
+	display: none;
+	z-index: 3;
+	width: 4%; 
+	height: 1.7%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 12.5%;
+	left: 49.5%;
+}
+#pass3-4 {
+	display: none;
+	z-index: 3;
+	width: 4%; 
+	height: 1.7%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 12.5%;
+	left: 45.5%;
+}
+#boat {
+	display: none;
+	z-index: 10;
+	width: 25%; 
+	height: 7%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 45%;
+	left: 45%;
+}
+#wolf {
+	display: none;
+	z-index: 3;
+	width: 17%; 
+	height: 7%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 28%;
+	left: 22%;
+}
+#sheep {
+	display: none;
+	z-index: 3;
+	width: 14%; 
+	height: 5.5%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 35.7%;
+	left: 22%;
+}
+#cabbage {
+	display: none;
+	z-index: 3;
+	width: 11%; 
+	height: 5%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 43%;
+	left: 20%;
+}
+#check_green {
+	display: none;
+	z-index: 3;
+	width: 11%; 
+	height: 5%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 10%;
+	left: 29%;
+}
+#success_app {
+	display: none;
+	z-index: 3;
+	width: 63%; 
+	height: 13%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 30%;
+	left: 50%;
+}
+#fail_app {
+	display: none;
+	z-index: 3;
+	width: 63%; 
+	height: 13%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 30%;
+	left: 50%;
+}
+#ending3 {
+	display: block;
+	z-index: 15;
+	width: 100%; 
+	height: 70%;
+	position: absolute;
+	top: 0%;
+	left: 0%;
+}
