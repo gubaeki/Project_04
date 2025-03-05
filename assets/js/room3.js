@@ -217,6 +217,7 @@ document.addEventListener('click', function(event) {
             door3_1.style.display = 'none';
             light_water.style.display = 'none';
             smartphone.style.display = 'none';
+            room.style.touchAction = 'none';
 
             if(door3_1_open){
                 press_both.style.display = 'block';
@@ -242,6 +243,7 @@ document.addEventListener('click', function(event) {
             press_down.style.display = 'none';
             press_both.style.display = 'none';
             user_input = [];
+            room.style.touchAction = '';
 
             if(door3_1_open){
                 if(smartphone_get==false){
