@@ -235,7 +235,7 @@ document.addEventListener('click', function(event) {
     }
 
     else if(room_number === 1.1){ // 엘리베이터 버튼
-        if(x < roomWidth * 0.2 && y > roomHeight * 0.8){ // 메인룸 돌아가기
+        if(x < roomWidth * 0.2 && y > roomHeight * 0.83 && y < roomHeight * 0.97){ // 메인룸 돌아가기
             room_number = 1;
             room.setAttribute('src', 'images/room3-1.png');
             return_img.style.display = 'none';
@@ -359,7 +359,7 @@ document.addEventListener('click', function(event) {
     }
 
     else if(room_number === 3){ // 게이트
-        if(x < roomWidth * 0.2 && y > roomHeight * 0.8){ // 메인룸 돌아가기
+        if(x < roomWidth * 0.2 && y > roomHeight * 0.83 && y < roomHeight * 0.97){ // 메인룸 돌아가기
             room.setAttribute('src', 'images/room3-1.png');
             return_img.style.display = 'none';
             key.style.display = 'none';
@@ -401,7 +401,7 @@ document.addEventListener('click', function(event) {
     }
 
     else if(room_number === 4){ // 스마트폰
-        if(x < roomWidth * 0.2 && y > roomHeight * 0.8 && moving === false){ // 게이트 돌아가기
+        if(x < roomWidth * 0.2 && y > roomHeight * 0.83 && y < roomHeight * 0.97 && moving === false){ // 게이트 돌아가기
             room_number = 3;
             room.setAttribute('src', 'images/room3-3.png');
             return_img.style.display = 'block';
