@@ -45,13 +45,17 @@ document.addEventListener('click', function(event) {
     var x = event.pageX;
     var y = event.pageY;
 
-    if(x > roomWidth * 0.2 && x < roomWidth * 0.8 && y < roomHeight * 0.45 && y > roomHeight * 0.08){ // 터치패드 클릭
+    if(x > roomWidth * 0.10 && x < roomWidth * 0.5 && y < roomHeight * 0.37 && y > roomHeight * 0.08){ // 터치패드 클릭
         console.log('방1');
         location.href='index.html'
     }
-    else if(x > roomWidth * 0.2 && x < roomWidth * 0.8 && y < roomHeight * 0.95 && y > roomHeight * 0.55){ // 터치패드 클릭
+    else if(x > roomWidth * 0.5 && x < roomWidth * 0.93 && y < roomHeight * 0.63 && y > roomHeight * 0.38){ // 터치패드 클릭
         console.log('방2');
         location.href='index2.html'
+    }
+    else if(x > roomWidth * 0.10 && x < roomWidth * 0.5 && y < roomHeight * 0.95 && y > roomHeight * 0.66){ // 터치패드 클릭
+        console.log('방3');
+        location.href='index3.html'
     }
     
 });
